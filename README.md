@@ -22,9 +22,11 @@ My Sway Dotfiles
 
 ### WARNING
 This is only a base, anything can change
+#### Please let me know if something is broken
+#### this is my first time making a github repo
 
 ### TO-DO
-- [ ] Easy wallpaper picker using bemenu
+- [x] Easy wallpaper picker using bemenu (beta)
 - [x] Clipboard manager using bemenu
 - [ ] Release more premade themes
 - [x] Release Gruvbox

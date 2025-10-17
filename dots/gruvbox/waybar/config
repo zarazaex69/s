@@ -1,0 +1,77 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    "mode": "dock",
+
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "memory",
+        "tray",
+        "clock#time"
+    ],
+
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "  {}%", 
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "foot nmtui"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "sway/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": true,
+        "format": "{icon} {name}",
+        "format-icons": {
+            "1:www": "龜",
+            "2:mail": "",
+            "3:code": "",
+            "4:term": "",
+            "5:media": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    }
+}
+

@@ -1,0 +1,10 @@
+### Theme / Appearance
+#client.focused #ffffff #ffffff #ffffff #ffffff #ffffff 
+#client.unfocused #222222 #222222 #222222 #222222 #222222 
+
+default_border pixel 3
+default_floating_border pixel 3
+gaps inner 10
+# Wallpaper
+# wallpaper is set by the wallpaper-picker.sh script /sway/scripts/wallpaper-picker.sh
+# output * bg /home/pirtur/Pictures/Wallpapers/wind2.png center

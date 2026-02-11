@@ -3,33 +3,42 @@
 # Applications / Services
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+b exec $web-browser
+bindsym $mod+Shift+и exec $web-browser
 bindsym $mod+Shift+e exec $filemanager
+bindsym $mod+Shift+у exec $filemanager
 bindsym $mod+Shift+Return exec $menu
 bindsym $mod+q kill
+bindsym $mod+й kill
 bindsym $mod+Shift+a exec $wallpaper-picker
+bindsym $mod+Shift+ф exec $wallpaper-picker
 
 # swaylock   
 bindsym $mod+Ctrl+L exec sh /home/pirtur/Scripts/swaylock.sh
 
 # SwayNC 
 bindsym $mod+Shift+w exec $notification
+bindsym $mod+Shift+ц exec $notification
 
 # Clipboard
 bindsym $mod+Shift+v exec $clipboard-hist
+bindsym $mod+Shift+м exec $clipboard-hist
 
 # Floating window mouse behavior
 floating_modifier $mod normal
 
 # Reload sway config
 bindsym $mod+Shift+c reload
+bindsym $mod+Shift+с reload
 
 # Exit sway
 bindsym $mod+Shift+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+Ctrl+у exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 ### Utilities / Hardware keys
 # Screenshots
 bindsym Print exec $screenshot
 bindsym $mod+Shift+s exec $screenshot
+bindsym $mod+Shift+ы exec $screenshot
 
 # Audio
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle

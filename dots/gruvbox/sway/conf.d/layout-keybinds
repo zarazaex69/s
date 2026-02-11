@@ -22,15 +22,23 @@ bindsym $mod+Shift+Right move right
 
 # Layouts
 bindsym $mod+b splith
+bindsym $mod+и splith
 bindsym $mod+v splitv
+bindsym $mod+м splitv
 bindsym $mod+s layout stacking
+bindsym $mod+ы layout stacking
 bindsym $mod+w layout tabbed
+bindsym $mod+ц layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+у layout toggle split
 bindsym $mod+f fullscreen
+bindsym $mod+а fullscreen
 bindsym $mod+m maximize
+bindsym $mod+ь maximize
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
+bindsym $mod+ф focus parent
 
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad

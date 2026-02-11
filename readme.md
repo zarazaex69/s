@@ -27,12 +27,6 @@ My Sway Dotfiles
 |  Menu               | Bemenu      |
 |  File Browser       | Yazi        |
 
-### WARNING
-This is only a base, anything can change
-#### Please let me know if something is broken
-#### this is my first time making a github repo
-
-
 ### Credits
 Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)
 Off repo author: [Pirtur](https://github.com/pirtur/sway-dots/fork)

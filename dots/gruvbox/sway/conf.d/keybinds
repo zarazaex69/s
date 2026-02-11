@@ -29,7 +29,7 @@ bindsym $mod+Shift+Ctrl+e exec swaynag -t warning -m 'You pressed the exit short
 ### Utilities / Hardware keys
 # Screenshots
 bindsym Print exec $screenshot
-bindsym $mod+s exec $screenshot
+bindsym $mod+Shift+s exec $screenshot
 
 # Audio
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle

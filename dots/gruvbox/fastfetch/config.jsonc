@@ -16,7 +16,7 @@
             "format": "{user-name}@{host-name}"
         },
         {
-            "key": "`󰣇 distro",
+            "key": "󰣇 distro",
             "type": "os"
         },
         {

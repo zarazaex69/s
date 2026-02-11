@@ -156,9 +156,33 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[ > ](bold fg:#515151)'
+success_symbol = '[ > ](bold fg:#689d6a)'
 error_symbol = '[ 󰎍 ](bold fg:#cc241d)'
 vimcmd_symbol = '[ 󰎍 ](bold fg:#515151)'
 vimcmd_replace_one_symbol = '[ > ](bold fg:#b16286)'
-vimcmd_replace_symbol = '[ ](bold fg:#b16286)'
-vimcmd_visual_symbol = '[ ](bold fg:#d79921)'
+vimcmd_replace_symbol = '[ ](bold fg:#b16286)'
+vimcmd_visual_symbol = '[ ](bold fg:#d79921)'
+
+[cmd_duration]
+min_time = 500
+style = "fg:#fabd2f"
+format = "[ 󱎫 $duration ]($style)"
+
+[status]
+style = "fg:#cc241d"
+symbol = "󰎍"
+success_symbol = ""
+not_executable_symbol = "󰎍"
+not_found_symbol = "󰎍"
+sigint_symbol = "󰎍"
+signal_symbol = "󰎍"
+format = '[$symbol$common_meaning$signal_name$maybe_int ]($style)'
+map_symbol = true
+disabled = false
+
+[shell]
+fish_indicator = "󰈺"
+bash_indicator = "󱆃"
+zsh_indicator = "󰰶"
+style = "fg:#458588"
+disabled = false

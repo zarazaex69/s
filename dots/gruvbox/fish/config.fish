@@ -1,6 +1,9 @@
 if status is-interactive
     set fish_greeting
-    
+
+    source ~/.config/eza/colors
+
+
     alias ls 'eza --icons'
     alias ll 'eza --icons -l'
     alias la 'eza --icons -la'

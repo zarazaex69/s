@@ -148,6 +148,7 @@ mkdir -p ~/.config/dunst
 mkdir -p ~/.config/yazi
 mkdir -p ~/.config/fuzzel
 mkdir -p ~/.config/fastfetch
+mkdir -p ~/.config/eza
 mkdir -p ~/Pictures/Screenshots
 
 print_step "Copying Sway configuration"
@@ -185,6 +186,10 @@ cp $SCRIPT_DIR/dots/gruvbox/fuzzel/fuzzel.ini ~/.config/fuzzel/
 
 print_step "Copying Fastfetch configuration"
 cp $SCRIPT_DIR/dots/gruvbox/fastfetch/config.jsonc ~/.config/fastfetch/
+
+print_step "Copying Eza configuration"
+cp $SCRIPT_DIR/dots/gruvbox/eza/eza.conf ~/.config/eza/
+cp $SCRIPT_DIR/dots/gruvbox/eza/colors ~/.config/eza/
 
 print_step "Setting up wallpaper"
 mkdir -p ~/Pictures/Wallpapers

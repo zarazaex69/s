@@ -10,8 +10,8 @@ notifications=$(dunstctl history | jq -r '
 # Fallback if empty
 [ -z "$notifications" ] && notifications="No notifications."
 
-# Display in bemenu (uses your existing theme)
-chosen=$(echo "$notifications" | bemenu -i -l 10 -p "Notifications")
+# Display in fuzzel (uses your existing theme)
+chosen=$(echo "$notifications" | fuzzel --dmenu -p "Notifications: ")
 
 # Optional: close all notifications if user selects one
 if [ -n "$chosen" ] && [ "$chosen" != "No notifications." ]; then

@@ -36,6 +36,7 @@ set -l packages \
     fish \
     starship \
     bemenu \
+    fuzzel \
     yazi \
     dunst \
     grim \
@@ -144,7 +145,7 @@ mkdir -p ~/.config/foot
 mkdir -p ~/.config/fish
 mkdir -p ~/.config/dunst
 mkdir -p ~/.config/yazi
-mkdir -p ~/.config/bemenu
+mkdir -p ~/.config/fuzzel
 mkdir -p ~/.config/fastfetch
 mkdir -p ~/Pictures/Screenshots
 
@@ -178,10 +179,8 @@ if test -d $SCRIPT_DIR/dots/gruvbox/yazi/flavors
     cp -r $SCRIPT_DIR/dots/gruvbox/yazi/flavors ~/.config/yazi/
 end
 
-print_step "Copying Bemenu configuration"
-if test -f $SCRIPT_DIR/dots/gruvbox/bemenu/bemenu-command.txt
-    cp $SCRIPT_DIR/dots/gruvbox/bemenu/bemenu-command.txt ~/.config/bemenu/
-end
+print_step "Copying Fuzzel configuration"
+cp $SCRIPT_DIR/dots/gruvbox/fuzzel/fuzzel.ini ~/.config/fuzzel/
 
 print_step "Copying Fastfetch configuration"
 cp $SCRIPT_DIR/dots/gruvbox/fastfetch/config.jsonc ~/.config/fastfetch/

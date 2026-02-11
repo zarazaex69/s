@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Simple wallpaper switcher for Sway + pywal + bemenu
+# Simple wallpaper switcher for Sway + pywal + fuzzel
 # ---------------------------------------------------
 
 # Directory containing wallpapers
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 
 # Dependencies check
-for cmd in bemenu swaybg wal swaymsg; do
+for cmd in fuzzel swaybg wal swaymsg; do
   command -v "$cmd" >/dev/null 2>&1 || {
     echo "❌ Missing dependency: $cmd"
     exit 1
@@ -22,7 +22,7 @@ done
 # List wallpapers and select one
 SELECTED=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) |
   xargs -I{} basename "{}" |
-  bemenu -i -l 10 --prompt "Choose wallpaper:")
+  fuzzel --dmenu -p "Choose wallpaper: ")
 
 # Cancel if nothing selected
 [ -z "$SELECTED" ] && exit 0

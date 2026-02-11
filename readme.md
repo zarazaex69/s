@@ -6,8 +6,8 @@
 
 </div>
 
-# Sway Dotfiles
-My Sway Dotfiles
+# Abount
+Sway dotfiles is a sway gruvbox style cfgs
 
 
 ### Screenshots

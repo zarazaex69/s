@@ -13,9 +13,8 @@
     "modules-right": [
         "network",
         "pulseaudio",
-        "memory",
-        "disk",
         "cpu",
+        "memory",
         "temperature",
         "sway/language",
         "tray",
@@ -26,44 +25,37 @@
         "format": "{:%H:%M:%S}",
         "tooltip": false
     },
-    "memory": {
+    "cpu": {
         "interval": 5,
-        "format": "  {}%",
-        "tooltip-format": "ОЗУ: {used:0.1f}GB/{total:0.1f}GB",
+        "format": " {usage}%",
         "states": {
             "warning": 70,
             "critical": 90
         }
     },
-    "disk": {
-        "interval": 30,
-        "format": "  {percentage_used}%",
-        "path": "/",
-        "tooltip-format": "Диск: {used} из {total} ({percentage_used}%)"
-    },
-    "cpu": {
-        "interval": 5,
-        "format": "  {usage}%",
-        "tooltip-format": "Нагрузка: {usage}%"
-    },
     "temperature": {
-        "interval": 5,
-        "thermal-zone": 0,
-        "format": "  {temperatureC}°C",
         "critical-threshold": 80,
-        "format-critical": " {temperatureC}°C",
-        "tooltip-format": "Процессор: {temperatureC}°C"
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "memory": {
+        "interval": 5,
+        "format": " {}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
     "network": {
         "interval": 1,
-        "format-wifi": "   {bandwidthDownBytes}  {bandwidthUpBytes}",
-        "format-ethernet": "  {bandwidthDownBytes}  {bandwidthUpBytes}",
-        "format-disconnected": "⚠ disconnected",
+        "format-wifi": "  {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-ethernet": "󰈀   {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-disconnected": "󰖟 disconnected",
         "tooltip-format": "{ifname}: {ipaddr}",
         "on-click": "foot nmtui"
     },
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
+        "format": "{icon} {volume}%",
         "format-muted": "",
         "format-icons": {
             "default": ["", ""]
@@ -75,7 +67,7 @@
         "disable-scroll": true,
         "format": "{icon} {name}",
         "format-icons": {
-            "1:www": "龜",
+            "1:www": "󰖟",
             "2:mail": "",
             "3:code": "",
             "4:term": "",
@@ -90,7 +82,7 @@
         "spacing": 10
     },
     "sway/language": {
-        "format": "  {}",
+        "format": " {}",
         "max-length": 5,
         "tooltip-format": "Keyboard: {long}"
     }

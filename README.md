@@ -10,13 +10,12 @@ My Sway Dotfiles
 ### Details
 | Category            | Application |
 | --------            | ----------- |
-|  OS                 | Void Linux     |
+|  OS                 | Arch Linux     |
 |  WM                 | Sway        |
 |  Autotiling Script  | [Autotiling](https://github.com/nwg-piotr/autotiling) | 
 |  Bar                | Waybar      |
 |  Terminal           | Foot        |
-|  Shell              | ZSH (Oh-my-zsh)  |
-|  Prompt             | [Ohmyposh](https://ohmyposh.dev)  |
+|  Shell              | Fish  |
 |  Menu               | Bemenu      |
 |  File Browser       | Yazi        |
 
@@ -25,11 +24,7 @@ This is only a base, anything can change
 #### Please let me know if something is broken
 #### this is my first time making a github repo
 
-### TO-DO
-- [x] Easy wallpaper picker using bemenu (beta)
-- [x] Clipboard manager using bemenu
-- [ ] Release more premade themes
-- [x] Release Gruvbox
 
 ### Credits
 Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)
+Off repo author: [Pirtur](https://github.com/pirtur/sway-dots/fork)

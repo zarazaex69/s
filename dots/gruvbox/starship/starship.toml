@@ -156,9 +156,9 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[❯](bold fg:#98971a)'
-error_symbol = '[❯](bold fg:#cc241d)'
-vimcmd_symbol = '[❮](bold fg:#98971a)'
-vimcmd_replace_one_symbol = '[❮](bold fg:#b16286)'
-vimcmd_replace_symbol = '[❮](bold fg:#b16286)'
-vimcmd_visual_symbol = '[❮](bold fg:#d79921)'
+success_symbol = '[  ](bold fg:#98971a)'
+error_symbol = '[ 󰎍 ](bold fg:#cc241d)'
+vimcmd_symbol = '[ 󰎍 ](bold fg:#98971a)'
+vimcmd_replace_one_symbol = '[ ](bold fg:#b16286)'
+vimcmd_replace_symbol = '[ ](bold fg:#b16286)'
+vimcmd_visual_symbol = '[ ](bold fg:#d79921)'

@@ -48,6 +48,8 @@ set -l packages \
     fastfetch \
     eza \
     imagemagick \
+    cliphist \
+    wl-clipboard \
     ttf-font-awesome \
     ttf-jetbrains-mono-nerd \
     noto-fonts-emoji

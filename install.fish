@@ -58,8 +58,66 @@ if test $status -ne 0
     exit 1
 end
 
-print_step "Installing autotiling from AUR (optional)"
-print_info "You can install autotiling manually with: yay -S autotiling"
+print_step "Checking for yay AUR helper"
+
+if not command -v yay &> /dev/null
+    print_info "yay is not installed"
+    read -P "Do you want to install yay? (y/n): " -l install_yay
+    
+    if test "$install_yay" = "y" -o "$install_yay" = "Y"
+        print_step "Installing yay-bin"
+        
+        set -l temp_dir (mktemp -d)
+        cd $temp_dir
+        
+        print_info "Downloading yay-bin"
+        git clone https://aur.archlinux.org/yay-bin.git
+        
+        if test $status -ne 0
+            print_error "Failed to clone yay-bin repository"
+            cd -
+            rm -rf $temp_dir
+        else
+            cd yay-bin
+            print_info "Building and installing yay-bin"
+            makepkg -si --noconfirm
+            
+            if test $status -ne 0
+                print_error "Failed to install yay-bin"
+                cd -
+                rm -rf $temp_dir
+            else
+                print_step "yay installed successfully"
+                cd -
+                rm -rf $temp_dir
+            end
+        end
+    else
+        print_info "Skipping yay installation"
+    end
+else
+    print_info "yay is already installed"
+end
+
+if command -v yay &> /dev/null
+    print_step "Installing autotiling from AUR"
+    read -P "Do you want to install autotiling? (y/n): " -l install_autotiling
+    
+    if test "$install_autotiling" = "y" -o "$install_autotiling" = "Y"
+        print_info "Installing autotiling"
+        yay -S --needed autotiling
+        
+        if test $status -eq 0
+            print_step "autotiling installed successfully"
+        else
+            print_error "Failed to install autotiling"
+        end
+    else
+        print_info "Skipping autotiling installation"
+    end
+else
+    print_info "Skipping autotiling (yay not available)"
+end
 
 print_step "Creating config directories"
 mkdir -p ~/.config/sway
@@ -124,6 +182,5 @@ print_info "Or add it to your display manager"
 print_info ""
 print_info "Don't forget to:"
 print_info "1. Log out and log back in to apply Fish shell"
-print_info "2. Install autotiling: yay -S autotiling"
-print_info "3. Copy wallpapers to your preferred location"
-print_info "4. Adjust paths in Sway config if needed"
+print_info "2. Copy wallpapers to your preferred location"
+print_info "3. Adjust paths in Sway config if needed"

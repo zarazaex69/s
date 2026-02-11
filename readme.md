@@ -24,7 +24,7 @@ Sway dotfiles is a sway gruvbox style cfgs
 |  Bar                | Waybar      |
 |  Terminal           | Foot        |
 |  Shell              | Fish + Starship |
-|  Menu               | Bemenu      |
+|  Menu               | Fuzzel      |
 |  File Browser       | Yazi        |
 
 ### Credits

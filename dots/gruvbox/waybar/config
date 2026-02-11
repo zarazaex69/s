@@ -2,10 +2,12 @@
     "layer": "top",
     "position": "top",
     "height": 30,
+
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
     "mode": "dock",
+
     "modules-left": [
         "sway/workspaces"
     ],
@@ -18,38 +20,40 @@
         "tray",
         "clock#time"
     ],
+
     "clock#time": {
         "interval": 1,
         "format": "{:%H:%M:%S}",
         "tooltip": false
     },
+
     "memory": {
         "interval": 5,
-        "format": "  {}%",
+        "format": "  {}%", 
         "states": {
             "warning": 70,
             "critical": 90
         }
     },
+
     "network": {
-        "interval": 2,
-        "format-wifi": " ↓{bandwidthDown:4}K/s  ↑{bandwidthUp:4}K/s",
-        "format-ethernet": " ↓{bandwidthDown:4}K/s  ↑{bandwidthUp:4}K/s",
-        "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": "{ifname} ({essid}) - {ipaddr}",
+        "interval": 5,
+        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}",
         "on-click": "foot nmtui"
     },
+
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-muted": "",
         "format-icons": {
-            "default": [
-                "",
-                ""
-            ]
+            "default": ["", ""]
         },
         "on-click": "pavucontrol"
     },
+
     "sway/workspaces": {
         "all-outputs": false,
         "disable-scroll": true,
@@ -65,13 +69,16 @@
             "default": ""
         }
     },
+
     "tray": {
         "icon-size": 21,
         "spacing": 10
     },
+
     "sway/language": {
         "format": "  {}",
         "max-length": 5,
         "tooltip-format": "Keyboard: {long}"
     }
 }
+

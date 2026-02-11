@@ -32,18 +32,21 @@
         }
     },
     "network": {
-        "interval": 5,
-        "format-wifi": "  {bandwidthDown} Kb/s ↓ / {bandwidthUp} Kb/s ↑",
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}",
+        "interval": 2,
+        "format-wifi": " ↓{bandwidthDown:4}K/s  ↑{bandwidthUp:4}K/s",
+        "format-ethernet": " ↓{bandwidthDown:4}K/s  ↑{bandwidthUp:4}K/s",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname} ({essid}) - {ipaddr}",
         "on-click": "foot nmtui"
     },
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-muted": "",
         "format-icons": {
-            "default": ["", ""]
+            "default": [
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },

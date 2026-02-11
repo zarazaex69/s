@@ -38,7 +38,7 @@
 
     "network": {
     "interval": 1,
-    "format-wifi": " {signalStrength}%  {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "format-wifi": "   {bandwidthDownBytes}  {bandwidthUpBytes}",
     "format-ethernet": "  {bandwidthDownBytes}  {bandwidthUpBytes}",
     "format-disconnected": "⚠ disconnected",
     "tooltip-format": "{ifname}: {ipaddr}",

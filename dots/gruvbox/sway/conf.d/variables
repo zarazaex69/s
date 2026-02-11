@@ -10,7 +10,7 @@ set $term foot
 set $menu  j4-dmenu-desktop --dmenu='bemenu -i -l 10'
 set $screenshot grim -g "$(slurp)" $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png
 set $filemanager foot yazi
-set $clipboard-hist foot --app-id=clipboard-float sh -c 'cliphist list | bemenu -i -l 20 -p "Clipboard:" | cliphist decode | wl-copy'
+set $clipboard-hist cliphist list | bemenu -i -l 20 -p "Clipboard:" | cliphist decode | wl-copy
 set $web-browser firefox
 set $notification sh $HOME/.config/sway/scripts/dunst-hist.sh
 set $wallpaper-picker sh $HOME/.config/sway/scripts/wallpaper-picker-beta.sh

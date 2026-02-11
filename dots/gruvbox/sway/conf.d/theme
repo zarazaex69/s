@@ -6,8 +6,6 @@ default_border pixel 3
 default_floating_border pixel 3
 gaps inner 10
 
-for_window [app_id="clipboard-float"] floating enable, resize set 800 600, move position center
-
 # Wallpaper
 # wallpaper is set by the wallpaper-picker.sh script /sway/scripts/wallpaper-picker.sh
 # output * bg /home/pirtur/Pictures/Wallpapers/wind2.png center

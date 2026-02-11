@@ -54,7 +54,9 @@ set -l packages \
     wl-clipboard \
     ttf-font-awesome \
     ttf-jetbrains-mono-nerd \
-    noto-fonts-emoji
+    noto-fonts-emoji \
+    xorg-xinit \
+    xorg-xauth
 
 set -l packages_to_install
 
@@ -121,6 +123,10 @@ if command -v yay &> /dev/null
     
     if not pacman -Qi lsix &> /dev/null
         set -a aur_packages lsix
+    end
+    
+    if not pacman -Qi ly &> /dev/null
+        set -a aur_packages ly
     end
     
     if test (count $aur_packages) -gt 0
@@ -205,9 +211,68 @@ else
     print_info "Fish is already your default shell"
 end
 
+print_step "Configuring Ly display manager"
+
+if pacman -Qi ly &> /dev/null
+    print_info "Installing Ly configuration with Gruvbox theme"
+    
+    if test -f $SCRIPT_DIR/dots/gruvbox/ly/config.ini
+        sudo cp $SCRIPT_DIR/dots/gruvbox/ly/config.ini /etc/ly/config.ini
+        print_info "Ly config.ini installed"
+    else
+        print_error "Ly config.ini not found in dotfiles"
+    end
+    
+    if test -f $SCRIPT_DIR/dots/gruvbox/ly/apply-colors.sh
+        sudo mkdir -p /etc/ly
+        sudo cp $SCRIPT_DIR/dots/gruvbox/ly/apply-colors.sh /etc/ly/apply-colors.sh
+        sudo chmod +x /etc/ly/apply-colors.sh
+        print_info "Gruvbox color script installed"
+    else
+        print_error "apply-colors.sh not found in dotfiles"
+    end
+    
+    print_info "Modifying ly@.service to apply Gruvbox colors"
+    set -l service_file "/usr/lib/systemd/system/ly@.service"
+    
+    if test -f $service_file
+        if not grep -q "ExecStartPre=/etc/ly/apply-colors.sh" $service_file
+            sudo sed -i '/^\[Service\]/a ExecStartPre=/etc/ly/apply-colors.sh' $service_file
+            print_info "Gruvbox colors will be applied on Ly start"
+        else
+            print_info "Gruvbox colors already configured in service"
+        end
+    else
+        print_error "ly@.service not found at $service_file"
+    end
+    
+    print_step "Enabling Ly display manager"
+    
+    set -l current_dm (systemctl list-unit-files | grep -E 'display-manager.service' | awk '{print $2}')
+    
+    if test "$current_dm" = "enabled"
+        print_info "Disabling current display manager"
+        sudo systemctl disable display-manager.service
+    end
+    
+    print_info "Disabling getty on tty2"
+    sudo systemctl disable getty@tty2.service
+    
+    sudo systemctl enable ly@tty2.service
+    
+    if test $status -eq 0
+        print_step "Ly display manager enabled successfully"
+        print_info "Ly will start on tty2 with Gruvbox theme"
+    else
+        print_error "Failed to enable Ly display manager"
+    end
+else
+    print_info "Ly not installed, skipping display manager configuration"
+end
+
 print_step "Installation complete!"
 print_info "To start Sway, run: sway"
-print_info "Or add it to your display manager"
+print_info "Or reboot to use Ly display manager"
 print_info ""
 print_info "Don't forget to:"
 print_info "1. Log out and log back in to apply Fish shell"

@@ -47,6 +47,7 @@ set -l packages \
     pavucontrol \
     fastfetch \
     eza \
+    imagemagick \
     ttf-font-awesome \
     ttf-jetbrains-mono-nerd \
     noto-fonts-emoji
@@ -101,7 +102,8 @@ else
 end
 
 if command -v yay &> /dev/null
-    print_step "Installing autotiling from AUR"
+    print_step "Installing packages from AUR"
+    
     read -P "Do you want to install autotiling? (y/n): " -l install_autotiling
     
     if test "$install_autotiling" = "y" -o "$install_autotiling" = "Y"
@@ -116,8 +118,23 @@ if command -v yay &> /dev/null
     else
         print_info "Skipping autotiling installation"
     end
+    
+    read -P "Do you want to install lsix (terminal image viewer)? (y/n): " -l install_lsix
+    
+    if test "$install_lsix" = "y" -o "$install_lsix" = "Y"
+        print_info "Installing lsix"
+        yay -S --needed lsix
+        
+        if test $status -eq 0
+            print_step "lsix installed successfully"
+        else
+            print_error "Failed to install lsix"
+        end
+    else
+        print_info "Skipping lsix installation"
+    end
 else
-    print_info "Skipping autotiling (yay not available)"
+    print_info "Skipping AUR packages (yay not available)"
 end
 
 print_step "Creating config directories"

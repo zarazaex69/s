@@ -37,6 +37,7 @@ set -l packages \
     starship \
     bemenu \
     fuzzel \
+    j4-dmenu-desktop \
     yazi \
     dunst \
     grim \

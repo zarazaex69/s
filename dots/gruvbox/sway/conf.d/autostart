@@ -3,7 +3,8 @@ exec_always autotiling
 
 exec waybar
 
-exec_always wl-paste --watch cliphist store
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
 
 exec_always --no-startup-id swaybg -i ~/Pictures/Wallpapers/wind.png -m fill
 

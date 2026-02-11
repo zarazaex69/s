@@ -232,11 +232,13 @@ print_step "Configuring Ly display manager"
 if pacman -Qi ly &> /dev/null
     print_info "Installing Ly configuration with Gruvbox theme"
     
+    print_info "Script directory: $SCRIPT_DIR"
+    
     if test -f $SCRIPT_DIR/dots/gruvbox/ly/config.ini
         sudo cp $SCRIPT_DIR/dots/gruvbox/ly/config.ini /etc/ly/config.ini
         print_info "Ly config.ini installed"
     else
-        print_error "Ly config.ini not found in dotfiles"
+        print_error "Ly config.ini not found at: $SCRIPT_DIR/dots/gruvbox/ly/config.ini"
     end
     
     if test -f $SCRIPT_DIR/dots/gruvbox/ly/apply-colors.sh
@@ -245,7 +247,7 @@ if pacman -Qi ly &> /dev/null
         sudo chmod +x /etc/ly/apply-colors.sh
         print_info "Gruvbox color script installed"
     else
-        print_error "apply-colors.sh not found in dotfiles"
+        print_error "apply-colors.sh not found at: $SCRIPT_DIR/dots/gruvbox/ly/apply-colors.sh"
     end
     
     print_info "Modifying ly@.service to apply Gruvbox colors"

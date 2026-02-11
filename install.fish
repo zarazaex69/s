@@ -46,6 +46,7 @@ set -l packages \
     pulseaudio \
     pavucontrol \
     fastfetch \
+    eza \
     ttf-font-awesome \
     ttf-jetbrains-mono-nerd \
     noto-fonts-emoji

@@ -1,0 +1,164 @@
+format = """
+[](fg:#282828)\
+$os\
+$username\
+[](bg:#458588 fg:#282828)\
+$directory\
+[](fg:#458588 bg:#689d6a)\
+$git_branch\
+$git_status\
+[](fg:#689d6a bg:#d79921)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#d79921 bg:#cc241d)\
+$docker_context\
+[](fg:#cc241d bg:#b16286)\
+$time\
+[ ](fg:#b16286)\
+$line_break$character"""
+
+[os]
+disabled = false
+style = "bg:#282828 fg:#ebdbb2"
+format = '[$symbol ]($style)'
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_user = "bg:#282828 fg:#ebdbb2"
+style_root = "bg:#282828 fg:#fb4934"
+format = '[$user ]($style)'
+disabled = false
+
+[directory]
+style = "bg:#458588 fg:#282828"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[c]
+symbol = " "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#cc241d fg:#ebdbb2"
+format = '[ $symbol $context ]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:#689d6a fg:#282828"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#689d6a fg:#282828"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[gradle]
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:#d79921 fg:#282828"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#b16286 fg:#282828"
+format = '[  ♥ $time ]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:#98971a)'
+error_symbol = '[❯](bold fg:#cc241d)'
+vimcmd_symbol = '[❮](bold fg:#98971a)'
+vimcmd_replace_one_symbol = '[❮](bold fg:#b16286)'
+vimcmd_replace_symbol = '[❮](bold fg:#b16286)'
+vimcmd_visual_symbol = '[❮](bold fg:#d79921)'

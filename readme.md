@@ -23,7 +23,7 @@ My Sway Dotfiles
 |  Autotiling Script  | [Autotiling](https://github.com/nwg-piotr/autotiling) | 
 |  Bar                | Waybar      |
 |  Terminal           | Foot        |
-|  Shell              | Fish  |
+|  Shell              | Fish + Starship |
 |  Menu               | Bemenu      |
 |  File Browser       | Yazi        |
 

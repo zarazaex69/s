@@ -1,2 +1,10 @@
-include ~/.config/sway/conf.d/*
+include ~/.config/sway/conf.d/variables
+include ~/.config/sway/conf.d/theme
+include ~/.config/sway/conf.d/theme-colors
+include ~/.config/sway/conf.d/devices
+include ~/.config/sway/conf.d/autostart
+include ~/.config/sway/conf.d/keybinds
+include ~/.config/sway/conf.d/workspace-keybinds
+include ~/.config/sway/conf.d/layout-keybinds
+include ~/.config/sway/conf.d/resize-keybinds
 include /etc/sway/config.d/*

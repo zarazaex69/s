@@ -1,10 +1,18 @@
+
+<div align="center">
+
+![License](https://img.shields.io/badge/license-BSD--3--Clause-0D1117?style=flat-square&logo=open-source-initiative&logoColor=green&labelColor=0D1117)
+
+
+</div>
+
 # Sway Dotfiles
 My Sway Dotfiles
 
 
 ### Screenshots
-![Desktop](https://github.com/pirtur/sway-dots/blob/main/screenshots/2025-10-16_21-19-09.png)
-![Terminals](https://github.com/pirtur/sway-dots/blob/main/screenshots/2025-10-17_10-56-28.png)
+![Desktop]()
+![Terminals]()
 
 
 ### Details
@@ -28,3 +36,19 @@ This is only a base, anything can change
 ### Credits
 Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)
 Off repo author: [Pirtur](https://github.com/pirtur/sway-dots/fork)
+
+
+<div align="center">
+
+---
+
+### Contact
+
+Telegram: [zarazaex](https://t.me/zarazaexe)
+<br>
+Email: [zarazaex@tuta.io](mailto:zarazaex@tuta.io)
+<br>
+Site: [zarazaex.xyz](https://zarazaex.xyz)
+<br>
+
+</div>

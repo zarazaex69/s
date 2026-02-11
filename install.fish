@@ -63,39 +63,32 @@ end
 print_step "Checking for yay AUR helper"
 
 if not command -v yay &> /dev/null
-    print_info "yay is not installed"
-    read -P "Do you want to install yay? (y/n): " -l install_yay
+    print_info "yay is not installed, installing yay-bin"
     
-    if test "$install_yay" = "y" -o "$install_yay" = "Y"
-        print_step "Installing yay-bin"
-        
-        set -l temp_dir (mktemp -d)
-        cd $temp_dir
-        
-        print_info "Downloading yay-bin"
-        git clone https://aur.archlinux.org/yay-bin.git
+    set -l temp_dir (mktemp -d)
+    cd $temp_dir
+    
+    print_info "Downloading yay-bin"
+    git clone https://aur.archlinux.org/yay-bin.git
+    
+    if test $status -ne 0
+        print_error "Failed to clone yay-bin repository"
+        cd -
+        rm -rf $temp_dir
+    else
+        cd yay-bin
+        print_info "Building and installing yay-bin"
+        makepkg -si --noconfirm
         
         if test $status -ne 0
-            print_error "Failed to clone yay-bin repository"
+            print_error "Failed to install yay-bin"
             cd -
             rm -rf $temp_dir
         else
-            cd yay-bin
-            print_info "Building and installing yay-bin"
-            makepkg -si --noconfirm
-            
-            if test $status -ne 0
-                print_error "Failed to install yay-bin"
-                cd -
-                rm -rf $temp_dir
-            else
-                print_step "yay installed successfully"
-                cd -
-                rm -rf $temp_dir
-            end
+            print_step "yay installed successfully"
+            cd -
+            rm -rf $temp_dir
         end
-    else
-        print_info "Skipping yay installation"
     end
 else
     print_info "yay is already installed"
@@ -104,34 +97,13 @@ end
 if command -v yay &> /dev/null
     print_step "Installing packages from AUR"
     
-    read -P "Do you want to install autotiling? (y/n): " -l install_autotiling
+    print_info "Installing autotiling and lsix"
+    yay -S --needed --noconfirm autotiling lsix
     
-    if test "$install_autotiling" = "y" -o "$install_autotiling" = "Y"
-        print_info "Installing autotiling"
-        yay -S --needed autotiling
-        
-        if test $status -eq 0
-            print_step "autotiling installed successfully"
-        else
-            print_error "Failed to install autotiling"
-        end
+    if test $status -eq 0
+        print_step "AUR packages installed successfully"
     else
-        print_info "Skipping autotiling installation"
-    end
-    
-    read -P "Do you want to install lsix (terminal image viewer)? (y/n): " -l install_lsix
-    
-    if test "$install_lsix" = "y" -o "$install_lsix" = "Y"
-        print_info "Installing lsix"
-        yay -S --needed lsix
-        
-        if test $status -eq 0
-            print_step "lsix installed successfully"
-        else
-            print_error "Failed to install lsix"
-        end
-    else
-        print_info "Skipping lsix installation"
+        print_error "Failed to install some AUR packages"
     end
 else
     print_info "Skipping AUR packages (yay not available)"

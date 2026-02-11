@@ -45,7 +45,11 @@ set -l packages \
     swaylock \
     swaybg \
     brightnessctl \
-    pulseaudio \
+    pipewire \
+    pipewire-pulse \
+    pipewire-alsa \
+    pipewire-jack \
+    wireplumber \
     pavucontrol \
     fastfetch \
     eza \

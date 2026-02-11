@@ -5,7 +5,7 @@ exec waybar
 
 exec_always wl-paste --watch cliphist store
 
-exec_always --no-startup-id swaybg -i "$(cat ~/.cache/wal/wal)" -m fill
+exec_always --no-startup-id swaybg -i ~/Pictures/Wallpapers/wind.png -m fill
 
 exec_always dunst
 

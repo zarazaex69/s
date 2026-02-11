@@ -167,6 +167,11 @@ end
 print_step "Copying Fastfetch configuration"
 cp $SCRIPT_DIR/dots/gruvbox/fastfetch/config.jsonc ~/.config/fastfetch/
 
+print_step "Setting up wallpaper"
+mkdir -p ~/Pictures/Wallpapers
+cp $SCRIPT_DIR/wallpapers/wind.png ~/Pictures/Wallpapers/
+print_info "Wallpaper copied to ~/Pictures/Wallpapers/wind.png"
+
 print_step "Setting Fish as default shell"
 if not string match -q (which fish) $SHELL
     print_info "Changing default shell to Fish"
@@ -182,5 +187,4 @@ print_info "Or add it to your display manager"
 print_info ""
 print_info "Don't forget to:"
 print_info "1. Log out and log back in to apply Fish shell"
-print_info "2. Copy wallpapers to your preferred location"
-print_info "3. Adjust paths in Sway config if needed"
+print_info "2. Adjust paths in Sway config if needed"

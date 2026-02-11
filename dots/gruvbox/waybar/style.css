@@ -42,7 +42,8 @@
 #network,
 #pulseaudio,
 #temperature,
-#tray {
+#tray,
+#language {
     padding: 0 10px;
 }
 
@@ -101,5 +102,11 @@
 /* Slight visual separation between modules */
 #workspaces button + button {
     margin-left: 2px;
+}
+
+#language {
+    background: @bg2;
+    color: @aqua;
+    font-weight: bold;
 }
 

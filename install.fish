@@ -40,7 +40,6 @@ set -l packages \
     dunst \
     grim \
     slurp \
-    swappy \
     swaylock \
     swaybg \
     brightnessctl \
@@ -145,7 +144,6 @@ mkdir -p ~/.config/dunst
 mkdir -p ~/.config/yazi
 mkdir -p ~/.config/bemenu
 mkdir -p ~/.config/fastfetch
-mkdir -p ~/.config/swappy
 mkdir -p ~/Pictures/Screenshots
 
 print_step "Copying Sway configuration"
@@ -185,9 +183,6 @@ end
 
 print_step "Copying Fastfetch configuration"
 cp $SCRIPT_DIR/dots/gruvbox/fastfetch/config.jsonc ~/.config/fastfetch/
-
-print_step "Copying Swappy configuration"
-cp $SCRIPT_DIR/dots/gruvbox/swappy/config ~/.config/swappy/
 
 print_step "Setting up wallpaper"
 mkdir -p ~/Pictures/Wallpapers

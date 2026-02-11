@@ -13,4 +13,3 @@ set $filemanager foot yazi
 set $clipboard-hist cliphist list | fuzzel --dmenu -p "Clipboard: " | cliphist decode | wl-copy
 set $web-browser firefox
 set $notification sh $HOME/.config/sway/scripts/dunst-hist.sh
-set $wallpaper-picker sh $HOME/.config/sway/scripts/wallpaper-picker-beta.sh

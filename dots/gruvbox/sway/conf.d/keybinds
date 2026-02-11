@@ -6,7 +6,6 @@ bindsym $mod+Shift+b exec $web-browser
 bindsym $mod+Shift+e exec $filemanager
 bindsym $mod+Shift+Return exec $menu
 bindsym $mod+q kill
-bindsym $mod+Shift+a exec $wallpaper-picker
 
 # swaylock   
 bindsym $mod+Ctrl+L exec sh /home/pirtur/Scripts/swaylock.sh

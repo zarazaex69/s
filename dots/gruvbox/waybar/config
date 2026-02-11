@@ -40,7 +40,7 @@
     "interval": 1,
     "format-wifi": " {signalStrength}%  {bandwidthDownBytes}  {bandwidthUpBytes}",
     "format-ethernet": "  {bandwidthDownBytes}  {bandwidthUpBytes}",
-    "format-disconnected": "⚠ Отключено",
+    "format-disconnected": "⚠ disconnected",
     "tooltip-format": "{ifname}: {ipaddr}",
     "on-click": "foot nmtui"
     },

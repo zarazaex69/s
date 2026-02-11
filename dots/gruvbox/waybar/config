@@ -37,12 +37,12 @@
     },
 
     "network": {
-        "interval": 5,
-        "format-wifi": "  {essid} ({signalStrength}%)",
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}",
-        "on-click": "foot nmtui"
+    "interval": 1,
+    "format-wifi": " {signalStrength}%  {bandwidthDown}  {bandwidthUp}",
+    "format-ethernet": " {bandwidthDown}  {bandwidthUp}",
+    "format-disconnected": "⚠ disconnected",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click": "foot nmtui"
     },
 
     "pulseaudio": {

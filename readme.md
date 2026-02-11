@@ -11,8 +11,8 @@ Sway dotfiles is a sway gruvbox style cfgs
 
 
 ### Screenshots
-![Desktop]()
-![Terminals]()
+![Desktop](screenshots/desktop.png)
+![Terminals](screenshots/terminals.png)
 
 
 ### Details
@@ -46,3 +46,5 @@ Site: [zarazaex.xyz](https://zarazaex.xyz)
 <br>
 
 </div>
+
+[def]: screen

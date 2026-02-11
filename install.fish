@@ -52,12 +52,24 @@ set -l packages \
     ttf-jetbrains-mono-nerd \
     noto-fonts-emoji
 
-print_info "Packages to install: $packages"
-sudo pacman -S --needed $packages
+set -l packages_to_install
 
-if test $status -ne 0
-    print_error "Package installation failed"
-    exit 1
+for pkg in $packages
+    if not pacman -Qi $pkg &> /dev/null
+        set -a packages_to_install $pkg
+    end
+end
+
+if test (count $packages_to_install) -gt 0
+    print_info "Packages to install: $packages_to_install"
+    sudo pacman -S --needed --noconfirm $packages_to_install
+    
+    if test $status -ne 0
+        print_error "Package installation failed"
+        exit 1
+    end
+else
+    print_info "All required packages are already installed"
 end
 
 print_step "Checking for yay AUR helper"
@@ -97,13 +109,27 @@ end
 if command -v yay &> /dev/null
     print_step "Installing packages from AUR"
     
-    print_info "Installing autotiling and lsix"
-    yay -S --needed --noconfirm autotiling lsix
+    set -l aur_packages
     
-    if test $status -eq 0
-        print_step "AUR packages installed successfully"
+    if not pacman -Qi autotiling &> /dev/null
+        set -a aur_packages autotiling
+    end
+    
+    if not pacman -Qi lsix &> /dev/null
+        set -a aur_packages lsix
+    end
+    
+    if test (count $aur_packages) -gt 0
+        print_info "Installing from AUR: $aur_packages"
+        yay -S --needed --noconfirm $aur_packages
+        
+        if test $status -eq 0
+            print_step "AUR packages installed successfully"
+        else
+            print_error "Failed to install some AUR packages"
+        end
     else
-        print_error "Failed to install some AUR packages"
+        print_info "All AUR packages are already installed"
     end
 else
     print_info "Skipping AUR packages (yay not available)"

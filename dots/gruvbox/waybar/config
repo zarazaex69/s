@@ -29,7 +29,7 @@
 
     "memory": {
         "interval": 5,
-        "format": "  {}%", 
+        "format": "  {}%", 
         "states": {
             "warning": 70,
             "critical": 90
@@ -37,19 +37,19 @@
     },
 
     "network": {
-        "interval": 5,
-        "format-wifi": "  {essid} ({signalStrength}%)",
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
+        "interval": 1,
+        "format-wifi": "  {bandwidthDownBytes}",
+        "format-ethernet": "  {bandwidthDownBytes}",
         "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}",
+        "tooltip-format": "{ifname}: {ipaddr}\nDown: {bandwidthDownBytes} Up: {bandwidthUpBytes}",
         "on-click": "foot nmtui"
     },
 
     "pulseaudio": {
         "format": "{icon}  {volume}%",
-        "format-muted": "",
+        "format-muted": "",
         "format-icons": {
-            "default": ["", ""]
+            "default": ["", ""]
         },
         "on-click": "pavucontrol"
     },
@@ -59,14 +59,14 @@
         "disable-scroll": true,
         "format": "{icon} {name}",
         "format-icons": {
-            "1:www": "龜",
-            "2:mail": "",
-            "3:code": "",
-            "4:term": "",
-            "5:media": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "1:www": "龜",
+            "2:mail": "",
+            "3:code": "",
+            "4:term": "",
+            "5:media": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
         }
     },
 
@@ -81,4 +81,3 @@
         "tooltip-format": "Keyboard: {long}"
     }
 }
-

@@ -35,20 +35,20 @@ format = '[$symbol ]($style)'
 [os.symbols]
 Windows = "󰍲"
 Ubuntu = "󰕈"
-SUSE = ""
+SUSE = ""
 Raspbian = "󰐿"
 Mint = "󰣭"
 Macos = "󰀵"
-Manjaro = ""
+Manjaro = ""
 Linux = "󰌽"
 Gentoo = "󰣨"
 Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
+Alpine = ""
+Amazon = ""
+Android = "󰀲"
 Arch = "󰣇"
 Artix = "󰣇"
-CentOS = ""
+CentOS = "󱄚"
 Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
@@ -62,38 +62,38 @@ disabled = false
 
 [directory]
 style = "bg:#458588 fg:#282828"
-format = "[ $path ]($style)"
+format = "[   $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"Documents" = " 󰈙 "
+"Downloads" = " 󰥥 "
+"Music" = " 󱍙 "
+"Pictures" = "  "
 
 [c]
-symbol = " "
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
-symbol = " "
+symbol = "  "
 style = "bg:#cc241d fg:#ebdbb2"
 format = '[ $symbol $context ]($style)'
 
 [elixir]
-symbol = " "
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
-symbol = " "
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
-symbol = ""
+symbol = "  "
 style = "bg:#689d6a fg:#282828"
 format = '[ $symbol $branch ]($style)'
 
@@ -102,7 +102,7 @@ style = "bg:#689d6a fg:#282828"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
-symbol = " "
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
@@ -111,22 +111,22 @@ style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
-symbol = " "
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
-symbol = " "
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
-symbol = " "
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
-symbol = ""
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
@@ -136,12 +136,12 @@ style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
-symbol = ""
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
-symbol = " "
+symbol = "  "
 style = "bg:#d79921 fg:#282828"
 format = '[ $symbol ($version) ]($style)'
 

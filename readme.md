@@ -29,6 +29,7 @@ Sway dotfiles is a sway gruvbox style cfgs
 
 ### Credits
 Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)
+
 Off repo author: [Pirtur](https://github.com/pirtur/sway-dots/fork)
 
 

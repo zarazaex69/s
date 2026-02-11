@@ -157,6 +157,18 @@ mkdir -p ~/.config/fastfetch
 mkdir -p ~/.config/eza
 mkdir -p ~/Pictures/Screenshots
 
+print_step "Creating user directories"
+mkdir -p ~/Projects
+mkdir -p ~/Builds
+mkdir -p ~/Downloads
+mkdir -p ~/Documents
+mkdir -p ~/Pictures
+mkdir -p ~/Videos
+mkdir -p ~/Music
+mkdir -p ~/Desktop
+mkdir -p ~/.local/bin
+mkdir -p ~/.local/share
+
 print_step "Copying Sway configuration"
 cp -r $SCRIPT_DIR/dots/gruvbox/sway/config ~/.config/sway/
 cp -r $SCRIPT_DIR/dots/gruvbox/sway/conf.d ~/.config/sway/

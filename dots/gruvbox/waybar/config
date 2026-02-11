@@ -48,8 +48,8 @@
     },
     "network": {
         "interval": 1,
-        "format-wifi": "  {bandwidthDownBytes}  {bandwidthUpBytes}",
-        "format-ethernet": "󰈀   {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-wifi": "   {bandwidthDownBytes} ",
+        "format-ethernet": "󰈀   {bandwidthDownBytes}  ",
         "format-disconnected": "󰖟 disconnected",
         "tooltip-format": "{ifname}: {ipaddr}",
         "on-click": "foot nmtui"

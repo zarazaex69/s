@@ -149,7 +149,7 @@ format = '[ $symbol ($version) ]($style)'
 disabled = false
 time_format = "%R"
 style = "bg:#b16286 fg:#282828"
-format = '[󱑕 $time ]($style)'
+format = '[ 󱑕 $time ]($style)'
 
 [line_break]
 disabled = false

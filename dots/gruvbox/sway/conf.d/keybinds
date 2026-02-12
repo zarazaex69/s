@@ -8,9 +8,9 @@ bindsym $mod+Shift+Return exec $menu
 bindsym $mod+q kill
 
 # swaylock   
-bindsym $mod+Ctrl+L exec sh /home/pirtur/Scripts/swaylock.sh
+bindsym $mod+Ctrl+L exec sh $HOME/Scripts/swaylock.sh
 
-# SwayNC 
+# Dunst notification history
 bindsym $mod+Shift+w exec $notification
 
 # Clipboard

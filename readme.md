@@ -57,7 +57,7 @@ t.me/addtheme/t6WoEEBSIMdPjB73 or dots/gruvbox/telegram/gruvbox.tdesktop-theme
 |  Git Diff           | Delta       |
 |  Browser            | Firefox     |
 |  Login manager      | Ly          |
-|  Nontif             | Dunst       |
+|  Notify             | Dunst       |
 |  List Files         | Eza         |
 |  Sys info           | Fastfetch   |
 

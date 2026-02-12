@@ -13,6 +13,10 @@ Sway dotfiles is a sway gruvbox style cfgs
 ### Screenshots
 ![Desktop](screenshots/desktop.png)
 ![Terminals](screenshots/terminals.png)
+![Browser](screenshots/browser.png)
+![Ly](screenshots/ly.png)
+
+
 
 
 ### Details
@@ -30,6 +34,11 @@ Sway dotfiles is a sway gruvbox style cfgs
 |  System Monitor     | Htop        |
 |  Git Diff           | Delta       |
 |  Browser            | Firefox     |
+|  Login manager      | Ly          |
+|  Nontif             | Dunst       |
+|  List Files         | Eza         |
+|  Sys info           | Fastfetch   |
+
 
 ### Credits
 Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)

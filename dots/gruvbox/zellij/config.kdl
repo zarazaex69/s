@@ -21,81 +21,26 @@ mirror_session false
 layout_dir "~/.config/zellij/layouts"
 
 keybinds {
-    normal {
-        bind "Ctrl g" { SwitchToMode "locked"; }
-        bind "Ctrl p" { SwitchToMode "pane"; }
-        bind "Ctrl t" { SwitchToMode "tab"; }
-        bind "Ctrl n" { SwitchToMode "resize"; }
-        bind "Ctrl s" { SwitchToMode "scroll"; }
-        bind "Ctrl o" { SwitchToMode "session"; }
-        bind "Ctrl q" { Quit; }
-    }
-    
-    locked {
-        bind "Ctrl g" { SwitchToMode "normal"; }
-    }
-    
-    pane {
-        bind "Esc" { SwitchToMode "normal"; }
-        bind "h" "Left" { MoveFocus "Left"; }
-        bind "l" "Right" { MoveFocus "Right"; }
-        bind "j" "Down" { MoveFocus "Down"; }
-        bind "k" "Up" { MoveFocus "Up"; }
-        bind "n" { NewPane; SwitchToMode "normal"; }
-        bind "d" { NewPane "Down"; SwitchToMode "normal"; }
-        bind "r" { NewPane "Right"; SwitchToMode "normal"; }
-        bind "x" { CloseFocus; SwitchToMode "normal"; }
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
-        bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
-        bind "w" { ToggleFloatingPanes; SwitchToMode "normal"; }
-    }
-    
-    tab {
-        bind "Esc" { SwitchToMode "normal"; }
-        bind "h" "Left" { GoToPreviousTab; }
-        bind "l" "Right" { GoToNextTab; }
-        bind "n" { NewTab; SwitchToMode "normal"; }
-        bind "x" { CloseTab; SwitchToMode "normal"; }
-        bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
-        bind "1" { GoToTab 1; SwitchToMode "normal"; }
-        bind "2" { GoToTab 2; SwitchToMode "normal"; }
-        bind "3" { GoToTab 3; SwitchToMode "normal"; }
-        bind "4" { GoToTab 4; SwitchToMode "normal"; }
-        bind "5" { GoToTab 5; SwitchToMode "normal"; }
-        bind "6" { GoToTab 6; SwitchToMode "normal"; }
-        bind "7" { GoToTab 7; SwitchToMode "normal"; }
-        bind "8" { GoToTab 8; SwitchToMode "normal"; }
-        bind "9" { GoToTab 9; SwitchToMode "normal"; }
+    shared_except "locked" {
+        bind "Ctrl Shift Enter" { NewPane; }
+        bind "Ctrl Shift w" { CloseFocus; }
+        bind "Ctrl Shift Left" { MoveFocus "Left"; }
+        bind "Ctrl Shift Right" { MoveFocus "Right"; }
+        bind "Ctrl Shift Up" { MoveFocus "Up"; }
+        bind "Ctrl Shift Down" { MoveFocus "Down"; }
+        bind "Ctrl Shift l" { NextSwapLayout; }
+        bind "Ctrl Shift r" { SwitchToMode "resize"; }
+        bind "Ctrl Shift q" { Quit; }
     }
     
     resize {
         bind "Esc" { SwitchToMode "normal"; }
-        bind "h" "Left" { Resize "Increase Left"; }
-        bind "j" "Down" { Resize "Increase Down"; }
-        bind "k" "Up" { Resize "Increase Up"; }
-        bind "l" "Right" { Resize "Increase Right"; }
-        bind "H" { Resize "Decrease Left"; }
-        bind "J" { Resize "Decrease Down"; }
-        bind "K" { Resize "Decrease Up"; }
-        bind "L" { Resize "Decrease Right"; }
+        bind "Left" { Resize "Increase Left"; }
+        bind "Down" { Resize "Increase Down"; }
+        bind "Up" { Resize "Increase Up"; }
+        bind "Right" { Resize "Increase Right"; }
         bind "=" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
-    }
-    
-    scroll {
-        bind "Esc" { SwitchToMode "normal"; }
-        bind "e" { EditScrollback; SwitchToMode "normal"; }
-        bind "j" "Down" { ScrollDown; }
-        bind "k" "Up" { ScrollUp; }
-        bind "d" { HalfPageScrollDown; }
-        bind "u" { HalfPageScrollUp; }
-        bind "f" { PageScrollDown; }
-        bind "b" { PageScrollUp; }
-    }
-    
-    session {
-        bind "Esc" { SwitchToMode "normal"; }
-        bind "d" { Detach; }
     }
 }
 

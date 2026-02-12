@@ -374,3 +374,7 @@ panelview {
 #sidebar-header {
   display: none !important;
 }
+
+#reload-button {
+  display: none !important;
+}

@@ -187,7 +187,7 @@ button, toolbarbutton {
   --toolbar-field-color: var(--gruvbox-fg0) !important;
   --toolbar-field-border-color: var(--gruvbox-bg3) !important;
   --toolbar-field-focus-background-color: var(--gruvbox-bg2) !important;
-  --toolbar-field-focus-border-color: var(--gruvbox-yellow) !important;
+  --toolbar-field-focus-border-color: var(--gruvbox-orange) !important;
   
   --lwt-accent-color: var(--gruvbox-bg0) !important;
   --lwt-text-color: var(--gruvbox-fg0) !important;
@@ -202,7 +202,7 @@ button, toolbarbutton {
   
   --autocomplete-popup-background: var(--gruvbox-bg1) !important;
   --autocomplete-popup-color: var(--gruvbox-fg0) !important;
-  --autocomplete-popup-highlight-background: var(--gruvbox-yellow) !important;
+  --autocomplete-popup-highlight-background: var(--gruvbox-orange) !important;
   --autocomplete-popup-highlight-color: var(--gruvbox-bg0) !important;
 }
 
@@ -230,20 +230,21 @@ button, toolbarbutton {
 }
 
 .urlbarView-row[selected] {
-  background-color: var(--gruvbox-yellow) !important;
+  background-color: var(--gruvbox-orange) !important;
   color: var(--gruvbox-bg0) !important;
 }
 
 .tab-background {
-  background-color: var(--gruvbox-bg1) !important;
+  background-color: var(--gruvbox-bg0) !important;
 }
 
 .tab-background[selected="true"] {
-  background-color: var(--gruvbox-yellow) !important;
+  background-color: var(--gruvbox-orange) !important;
 }
 
 .tabbrowser-tab[selected="true"] .tab-label {
   color: var(--gruvbox-bg0) !important;
+  font-weight: bold !important;
 }
 
 .tabbrowser-tab:not([selected="true"]) .tab-label {
@@ -303,4 +304,56 @@ thumb {
 
 thumb:hover {
   background-color: var(--gruvbox-gray) !important;
+}
+
+.search-panel-one-offs-header,
+.search-panel-one-offs {
+  background-color: var(--gruvbox-bg1) !important;
+}
+
+.searchbar-engine-one-off-item {
+  background-color: var(--gruvbox-bg1) !important;
+}
+
+.searchbar-engine-one-off-item:hover {
+  background-color: var(--gruvbox-bg2) !important;
+}
+
+.searchbar-engine-one-off-item[selected] {
+  background-color: var(--gruvbox-bg3) !important;
+}
+
+.search-one-offs .searchbar-engine-one-off-item image {
+  background-color: transparent !important;
+  fill: var(--gruvbox-fg0) !important;
+}
+
+#navigator-toolbox::before {
+  content: "";
+  display: block;
+  height: 3px;
+  background-color: var(--gruvbox-orange) !important;
+}
+
+#TabsToolbar {
+  border-bottom: 1px solid var(--gruvbox-bg3) !important;
+}
+
+.tabbrowser-tab {
+  border: none !important;
+}
+
+.tab-background {
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#urlbar-background {
+  background-color: var(--gruvbox-bg1) !important;
+}
+
+#urlbar:focus-within #urlbar-background {
+  background-color: var(--gruvbox-bg2) !important;
+  border: 1px solid var(--gruvbox-orange) !important;
 }

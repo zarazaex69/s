@@ -163,3 +163,144 @@ button, toolbarbutton {
 .browserContainer {
   box-shadow: none !important;
 }
+
+:root {
+  --gruvbox-bg0: #282828;
+  --gruvbox-bg1: #3c3836;
+  --gruvbox-bg2: #504945;
+  --gruvbox-bg3: #665c54;
+  --gruvbox-fg0: #ebdbb2;
+  --gruvbox-fg1: #d5c4a1;
+  --gruvbox-fg2: #bdae93;
+  --gruvbox-gray: #928374;
+  --gruvbox-red: #cc241d;
+  --gruvbox-green: #98971a;
+  --gruvbox-yellow: #d79921;
+  --gruvbox-blue: #458588;
+  --gruvbox-purple: #b16286;
+  --gruvbox-aqua: #689d6a;
+  --gruvbox-orange: #d65d0e;
+  
+  --toolbar-bgcolor: var(--gruvbox-bg0) !important;
+  --toolbar-color: var(--gruvbox-fg0) !important;
+  --toolbar-field-background-color: var(--gruvbox-bg1) !important;
+  --toolbar-field-color: var(--gruvbox-fg0) !important;
+  --toolbar-field-border-color: var(--gruvbox-bg3) !important;
+  --toolbar-field-focus-background-color: var(--gruvbox-bg2) !important;
+  --toolbar-field-focus-border-color: var(--gruvbox-yellow) !important;
+  
+  --lwt-accent-color: var(--gruvbox-bg0) !important;
+  --lwt-text-color: var(--gruvbox-fg0) !important;
+  --lwt-toolbar-field-background-color: var(--gruvbox-bg1) !important;
+  --lwt-toolbar-field-color: var(--gruvbox-fg0) !important;
+  --lwt-toolbar-field-border-color: var(--gruvbox-bg3) !important;
+  --lwt-toolbar-field-focus: var(--gruvbox-bg2) !important;
+  
+  --arrowpanel-background: var(--gruvbox-bg1) !important;
+  --arrowpanel-color: var(--gruvbox-fg0) !important;
+  --arrowpanel-border-color: var(--gruvbox-bg3) !important;
+  
+  --autocomplete-popup-background: var(--gruvbox-bg1) !important;
+  --autocomplete-popup-color: var(--gruvbox-fg0) !important;
+  --autocomplete-popup-highlight-background: var(--gruvbox-yellow) !important;
+  --autocomplete-popup-highlight-color: var(--gruvbox-bg0) !important;
+}
+
+#navigator-toolbox {
+  background-color: var(--gruvbox-bg0) !important;
+}
+
+#nav-bar {
+  background-color: var(--gruvbox-bg0) !important;
+}
+
+#urlbar {
+  background-color: var(--gruvbox-bg1) !important;
+  color: var(--gruvbox-fg0) !important;
+  border: 1px solid var(--gruvbox-bg3) !important;
+}
+
+#urlbar:focus-within {
+  background-color: var(--gruvbox-bg2) !important;
+  border-color: var(--gruvbox-yellow) !important;
+}
+
+.urlbarView-row:hover {
+  background-color: var(--gruvbox-bg2) !important;
+}
+
+.urlbarView-row[selected] {
+  background-color: var(--gruvbox-yellow) !important;
+  color: var(--gruvbox-bg0) !important;
+}
+
+.tab-background {
+  background-color: var(--gruvbox-bg1) !important;
+}
+
+.tab-background[selected="true"] {
+  background-color: var(--gruvbox-yellow) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--gruvbox-bg0) !important;
+}
+
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--gruvbox-fg1) !important;
+}
+
+.tabbrowser-tab:hover:not([selected="true"]) .tab-background {
+  background-color: var(--gruvbox-bg2) !important;
+}
+
+#TabsToolbar {
+  background-color: var(--gruvbox-bg0) !important;
+}
+
+menupopup, panel {
+  background-color: var(--gruvbox-bg1) !important;
+  color: var(--gruvbox-fg0) !important;
+  border: 1px solid var(--gruvbox-bg3) !important;
+}
+
+menuitem:hover, menu:hover {
+  background-color: var(--gruvbox-bg2) !important;
+  color: var(--gruvbox-fg0) !important;
+}
+
+toolbarbutton {
+  fill: var(--gruvbox-fg1) !important;
+  color: var(--gruvbox-fg1) !important;
+}
+
+toolbarbutton:hover {
+  background-color: var(--gruvbox-bg2) !important;
+  fill: var(--gruvbox-fg0) !important;
+}
+
+#context-navigation menuitem:hover,
+#context-sep-navigation menuitem:hover {
+  background-color: var(--gruvbox-bg2) !important;
+}
+
+.panel-arrowcontent {
+  background-color: var(--gruvbox-bg1) !important;
+  color: var(--gruvbox-fg0) !important;
+}
+
+.subviewbutton:hover {
+  background-color: var(--gruvbox-bg2) !important;
+}
+
+scrollbar {
+  background-color: var(--gruvbox-bg1) !important;
+}
+
+thumb {
+  background-color: var(--gruvbox-bg3) !important;
+}
+
+thumb:hover {
+  background-color: var(--gruvbox-gray) !important;
+}

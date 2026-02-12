@@ -6,7 +6,7 @@
 
 </div>
 
-# Abount
+# Abont
 Sway dotfiles is a sway gruvbox style cfgs
 
 

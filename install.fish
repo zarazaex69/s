@@ -288,8 +288,9 @@ if test -n "$firefox_profile"
     
     mkdir -p "$firefox_profile/chrome"
     cp $SCRIPT_DIR/dots/gruvbox/firefox/userChrome.css "$firefox_profile/chrome/"
+    cp $SCRIPT_DIR/dots/gruvbox/firefox/userContent.css "$firefox_profile/chrome/"
     
-    print_info "Firefox user.js and userChrome.css installed to: $firefox_profile"
+    print_info "Firefox user.js, userChrome.css and userContent.css installed to: $firefox_profile"
     print_info "Restart Firefox completely for changes to take effect"
 else
     print_info "Firefox profile not found. Run Firefox once, then run this script again"

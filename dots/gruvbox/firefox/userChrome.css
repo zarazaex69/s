@@ -7,6 +7,17 @@
   --base04: #bdae93;
   --base05: #d5c4a1;
   --base06: #ebdbb2;
+  
+  --toolbar-bgcolor: var(--base00) !important;
+  --tab-selected-bgcolor: var(--base04) !important;
+  --lwt-accent-color: var(--base00) !important;
+  --lwt-text-color: var(--base06) !important;
+  --arrowpanel-background: var(--base01) !important;
+  --arrowpanel-color: var(--base06) !important;
+}
+
+* {
+  border-radius: 0 !important;
 }
 
 #navigator-toolbox #toolbar-menubar,
@@ -48,12 +59,14 @@
   border: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  border-radius: 0 !important;
 }
 #navigator-toolbox #urlbar {
   background: var(--base00) !important;
   color: var(--base06) !important;
   padding: 0 !important;
   padding-left: 6px !important;
+  border-radius: 0 !important;
 }
 #navigator-toolbox #tracking-protection-icon-container {
   display: none;
@@ -101,7 +114,7 @@
   background: var(--base01) !important;
   border: none !important;
   box-shadow: none !important;
-  border: none !important;
+  border-radius: 0 !important;
 }
 #navigator-toolbox .tabbrowser-tab .tab-label {
   color: var(--base05) !important;
@@ -118,6 +131,7 @@
 
 #navigator-toolbox .tab-background[selected='true'] {
   background: var(--base04) !important;
+  border-radius: 0 !important;
 }
 #navigator-toolbox .tabbrowser-tab[selected='true'] .tab-label {
   color: var(--base01) !important;
@@ -157,4 +171,46 @@
 
 #urlbar[breakout][breakout-extend] > #urlbar-background {
   box-shadow: none !important;
+}
+
+#urlbar-background,
+.urlbarView,
+.urlbarView-row,
+#urlbar-input-container,
+.search-one-offs,
+.searchbar-textbox {
+  border-radius: 0 !important;
+}
+
+menupopup,
+panel,
+tooltip {
+  background: var(--base01) !important;
+  color: var(--base06) !important;
+  border: 1px solid var(--base02) !important;
+  border-radius: 0 !important;
+}
+
+menuitem,
+menu {
+  color: var(--base06) !important;
+}
+
+menuitem:hover,
+menu:hover {
+  background: var(--base02) !important;
+}
+
+#context-navigation,
+#context-sep-navigation {
+  background: var(--base01) !important;
+}
+
+toolbar {
+  background: var(--base00) !important;
+}
+
+#sidebar-box {
+  background: var(--base00) !important;
+  color: var(--base06) !important;
 }

@@ -9,12 +9,30 @@
 # Abont
 Sway dotfiles is a sway gruvbox style cfgs
 
+# Fast start
+
+
+```bash
+# install fish and git 
+sudo pacman -S fish git 
+
+# clone repo 
+git clone https://github.com/zarazaex69/sway-dots
+
+# cd to repo
+cd sway-dots
+
+# run install script
+fish install.fish 
+```
 
 ### Screenshots
-![Desktop](screenshots/desktop.png)
-![Terminals](screenshots/terminals.png)
-![Browser](screenshots/browser.png)
-![Ly](screenshots/ly.png)
+
+| Desktop | Terminals |
+|---------|-----------|
+| ![Desktop](screenshots/desktop.png) | ![Terminals](screenshots/terminals.png) |
+| **Browser** | **Ly** |
+| ![Browser](screenshots/browser.png) | ![Ly](screenshots/ly.png) |
 
 
 

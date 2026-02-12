@@ -35,6 +35,7 @@ fish install.fish
 | ![Browser](screenshots/browser.png) | ![Ly](screenshots/ly.png) |
 
 
+<div align="center">
 
 
 ### Details
@@ -58,6 +59,10 @@ fish install.fish
 |  Sys info           | Fastfetch   |
 
 
+
+---
+
+
 ### Credits
 Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)
 
@@ -65,10 +70,6 @@ Off repo author: [Pirtur](https://github.com/pirtur/sway-dots)
 
 Firefox user.js: [yokoffing](https://github.com/yokoffing/Betterfox/blob/main/Fastfox.js)
 
-
-<div align="center">
-
----
 
 ### Contact
 

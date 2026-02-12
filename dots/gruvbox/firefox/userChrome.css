@@ -1,216 +1,148 @@
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/*
+*  Hi~
+*
+*  The theme Another Oneline uses code from
+*  👉 https://github.com/JarnotMaciej/Essence 👈 Thank you~~ 🤗
+*/
 
-:root {
-  --base00: #282828;
-  --base01: #3c3836;
-  --base02: #504945;
-  --base04: #bdae93;
-  --base05: #d5c4a1;
-  --base06: #ebdbb2;
-  
-  --toolbar-bgcolor: var(--base00) !important;
-  --tab-selected-bgcolor: var(--base04) !important;
-  --lwt-accent-color: var(--base00) !important;
-  --lwt-text-color: var(--base06) !important;
-  --arrowpanel-background: var(--base01) !important;
-  --arrowpanel-color: var(--base06) !important;
-}
+/* Just comment the lines or blocks for the elements you WANT to see */
 
-* {
-  border-radius: 0 !important;
+/* Menu button */
+#PanelUI-button {
+  -moz-box-ordinal-group: 0 !important;
+  order: -2 !important;
+  margin: 2px !important;
+  /* display: none !important; /* uncomment this line to hide the menu button */
 }
 
-#navigator-toolbox #toolbar-menubar,
-#navigator-toolbox #back-button,
-#navigator-toolbox #forward-button,
-#navigator-toolbox .tab-close-button,
-#navigator-toolbox #tabs-newtab-button,
-#navigator-toolbox #tracking-protection-icon-container,
-#navigator-toolbox #pageActionSeparator,
-#navigator-toolbox #pageActionButton,
-#navigator-toolbox #identity-box {
-  display: none;
-}
-
-#navigator-toolbox {
-  font-family: 'JetBrains Mono' !important;
-  font-size: 13.33px;
-  line-height: 16px;
-  border-bottom: none !important;
-}
-
-#navigator-toolbox toolbarspring {
-  display: none;
-}
-#navigator-toolbox .tab-line {
-  display: none;
-}
-#navigator-toolbox #urlbar-container {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-#navigator-toolbox #urlbar {
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-#navigator-toolbox #urlbar-background {
-  background: var(--base00) !important;
-  border: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-}
-#navigator-toolbox #urlbar {
-  background: var(--base00) !important;
-  color: var(--base06) !important;
-  padding: 0 !important;
-  padding-left: 6px !important;
-  border-radius: 0 !important;
-}
-#navigator-toolbox #tracking-protection-icon-container {
-  display: none;
-}
-#navigator-toolbox #urlbar-zoom-button {
-  border: none !important;
-}
-
-#navigator-toolbox #PanelUI-button {
-  border: none !important;
-}
-#navigator-toolbox #nav-bar {
-  background: var(--base00) !important;
-}
-#navigator-toolbox .toolbarbutton-1 {
-  background: pink;
-  width: 26px;
-  background: var(--base01);
-  border-left: solid 1px var(--base00);
-  box-shadow: none !important;
-}
-#navigator-toolbox #PanelUI-menu-button {
-  background: var(--base00);
-  border: none;
-}
-#navigator-toolbox toolbarbutton image {
-  display: none;
-}
-#navigator-toolbox #PanelUI-menu-button image {
-  display: block;
-}
-
-#navigator-toolbox .tab-content {
-  font-size: 12px;
-  line-height: 14px;
-  padding: 1px 4px 1px 5px !important;
-}
-#tabbrowser-tabs, #tabbrowser-arrowscrollbox {
-  min-height: 0 !important;
-}
-#navigator-toolbox .toolbar-items {
-  background: var(--base01);
-}
-#navigator-toolbox .tab-background {
-  background: var(--base01) !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-}
-#navigator-toolbox .tabbrowser-tab .tab-label {
-  color: var(--base05) !important;
-}
-#navigator-toolbox .tab-background .tab-line {
-  display: none;
-}
-#navigator-toolbox .tabbrowser-tab::after {
+/* Window control buttons (min, resize and close) */
+.titlebar-buttonbox-container {
   display: none !important;
-}
-#navigator-toolbox .tab-icon-image {
-  margin-top: 0 !important;
+  margin-right: 12px !important;
 }
 
-#navigator-toolbox .tab-background[selected='true'] {
-  background: var(--base04) !important;
-  border-radius: 0 !important;
-}
-#navigator-toolbox .tabbrowser-tab[selected='true'] .tab-label {
-  color: var(--base01) !important;
+/* Page back and foward buttons */
+#back-button,
+#forward-button
+{
+  display: none !important
 }
 
-#fullscr-toggler {
+/* Extensions button */
+#unified-extensions-button {
+  display: none !important
+}
+
+/* Extension name inside URL bar */
+#identity-box.extensionPage #identity-icon-label {
+  visibility: collapse !important
+}
+
+/* All tabs (v-like) button */
+#alltabs-button {
+  display: none !important
+}
+
+/* URL bar icons */
+#identity-permission-box,
+#star-button-box,
+#identity-icon-box,
+#picture-in-picture-button,
+#tracking-protection-icon-container,
+#reader-mode-button,
+#translations-button
+{
+  display: none !important
+}
+
+/* "This time search with:..." */
+#urlbar .search-one-offs {
+  display: none !important
+}
+
+/* Space before and after tabs */
+.titlebar-spacer {
   display: none;
 }
 
-#tabbrowser-tabs
-  .tabbrowser-tab[first-visible-tab='true'][last-visible-tab='true'] {
-  visibility: collapse !important;
+/* --- ~END~ element visibility section --- */
+
+/* Navbar size calc */
+:root{
+--tab-border-radius: 6px !important; /*  Tab border radius -- Changes the tabs rounding  *//*  Default: 6px  */
+--NavbarWidth: 43; /*  Default values: 36 - 43  */
+--TabsHeight: 36; /*  Minimum: 30  *//*  Default: 36  */
+--TabsBorder: 8; /*  Doesnt do anything on small layout  *//*  Default: 8  */
+--NavbarHeightSmall: calc(var(--TabsHeight) + var(--TabsBorder))  /*  Only on small layout  *//*  Default: calc(var(--TabsHeight) + var(--TabsBorder))  *//*  Default as a number: 44  */}
+
+@media screen and (min-width:1325px)    /*  Only the tabs space will grow from here  */
+{:root #nav-bar{margin-top: calc(var(--TabsHeight) * -1px - var(--TabsBorder) * 1px)!important; height: calc(var(--TabsHeight) * 1px + var(--TabsBorder) * 1px)} #TabsToolbar{margin-left: calc(1325px / 100 * var(--NavbarWidth)) !important} #nav-bar{margin-right: calc(100vw - calc(1325px / 100 * var(--NavbarWidth))) !important; vertical-align: center !important} #urlbar-container{min-width: 0px !important;  flex: auto !important} toolbarspring{display: none !important}}
+
+@media screen and (min-width:950px) and (max-width:1324px)    /*  Both the tabs space and the navbar will grow  */
+{:root #nav-bar{margin-top: calc(var(--TabsHeight) * -1px - var(--TabsBorder) * 1px) !important; height: calc(var(--TabsHeight) * 1px + var(--TabsBorder) * 1px)} #TabsToolbar{margin-left: calc(var(--NavbarWidth) * 1vw) !important} #nav-bar{margin-right: calc(100vw - calc(var(--NavbarWidth) * 1vw)) !important; vertical-align: center !important} #urlbar-container{min-width: 0px !important;  flex: auto !important} toolbarspring{display: none !important} #TabsToolbar, #nav-bar{transition: margin-top .25s !important}}
+
+@media screen and (max-width:949px)    /*  The window is not enough wide for a one line layout  */
+{:root #nav-bar{padding: 0 5px 0 5px!important; height: calc(var(--NavbarHeightSmall) * 1px) !important} toolbarspring{display: none !important;} #TabsToolbar, #nav-bar{transition: margin-top .25s !important}}
+#nav-bar, #PersonalToolbar{background-color: #0000 !important;background-image: none !important; box-shadow: none !important} #nav-bar{margin-left: 3px;} .tab-background, .tab-stack { min-height: calc(var(--TabsHeight) * 1px) !important}
+
+/*  Removes urlbar border/background  */
+#urlbar-background {
+  border: none !important;
+  outline: none !important;
+  transition: .15s !important;
 }
 
-#urlbar[breakout][breakout-extend] {
-  top: 5px !important;
-  left: 0px !important;
-  width: 100% !important;
-  padding: 0px !important;
-}
-
-[uidensity="compact"] #urlbar[breakout][breakout-extend] {
-  top: 3px !important;
-}
-[uidensity="touch"] #urlbar[breakout][breakout-extend] {
-  top: 4px !important;
-}
-
-#urlbar[breakout][breakout-extend] > #urlbar-input-container {
-  height: var(--urlbar-height) !important;
-  padding: 0 !important;
-}
-
-#urlbar[breakout][breakout-extend] > #urlbar-background {
-  animation: none !important;;
-}
-
-#urlbar[breakout][breakout-extend] > #urlbar-background {
+/*  Removes the background from the urlbar while not in use  */
+#urlbar:not(:hover):not([breakout][breakout-extend]) > #urlbar-background {
   box-shadow: none !important;
+  background: #0000 !important;
 }
 
-#urlbar-background,
-.urlbarView,
-.urlbarView-row,
-#urlbar-input-container,
-.search-one-offs,
-.searchbar-textbox {
-  border-radius: 0 !important;
+/*  Removes annoying border  */
+#navigator-toolbox {
+  border: none !important
 }
 
-menupopup,
-panel,
-tooltip {
-  background: var(--base01) !important;
-  color: var(--base06) !important;
-  border: 1px solid var(--base02) !important;
-  border-radius: 0 !important;
+/* Fades window while not in focus */
+#navigator-toolbox-background:-moz-window-inactive {
+  filter: contrast(90%)
 }
 
-menuitem,
-menu {
-  color: var(--base06) !important;
+/* Remove fullscreen warning border */
+#fullscreen-warning {
+  border: none !important;
+  background: -moz-Dialog !important;
 }
 
-menuitem:hover,
-menu:hover {
-  background: var(--base02) !important;
+/*  Tabs close button  */
+.tabbrowser-tab:not(:hover) .tab-close-button {
+  opacity: 0% !important;
+  transition: 0.3s !important;
+  display: -moz-box !important;
 }
-
-#context-navigation,
-#context-sep-navigation {
-  background: var(--base01) !important;
+.tab-close-button[selected]:not(:hover) {
+  opacity: 45% !important;
+  transition: 0.3s !important;
+  display: -moz-box !important;
 }
-
-toolbar {
-  background: var(--base00) !important;
+.tabbrowser-tab:hover .tab-close-button {
+  opacity: 50%;
+  transition: 0.3s !important;
+  background: none !important;
+  cursor: pointer;
+  display: -moz-box !important;
 }
-
-#sidebar-box {
-  background: var(--base00) !important;
-  color: var(--base06) !important;
+.tab-close-button:hover {
+  opacity: 100% !important;
+  transition: 0.3s !important;
+  background: none !important;
+  cursor: pointer;
+  display: -moz-box !important;
+}
+.tab-close-button[selected]:hover {
+  opacity: 100% !important;
+  transition: 0.3s !important;
+  background: none !important;
+  cursor: pointer;
+  display: -moz-box !important;
 }

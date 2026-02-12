@@ -301,9 +301,10 @@ cp $SCRIPT_DIR/wallpapers/wind.png ~/Pictures/Wallpapers/
 print_info "Wallpaper copied to ~/Pictures/Wallpapers/wind.png"
 
 print_step "Setting Fish as default shell"
-if not string match -q (which fish) $SHELL
+set -l fish_path (which fish)
+if test "$SHELL" != "$fish_path"
     print_info "Changing default shell to Fish"
-    chsh -s (which fish)
+    chsh -s $fish_path
     print_info "You need to log out and log back in for shell change to take effect"
 else
     print_info "Fish is already your default shell"

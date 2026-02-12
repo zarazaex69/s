@@ -279,19 +279,20 @@ cp $SCRIPT_DIR/dots/gruvbox/htop/htoprc ~/.config/htop/
 print_step "Setting up Firefox"
 set -l firefox_profile (find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-release" 2>/dev/null | head -n 1)
 
+if test -z "$firefox_profile"
+    set firefox_profile (find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default" 2>/dev/null | head -n 1)
+end
+
 if test -n "$firefox_profile"
     cp $SCRIPT_DIR/dots/gruvbox/firefox/user.js "$firefox_profile/"
     
     mkdir -p "$firefox_profile/chrome"
     cp $SCRIPT_DIR/dots/gruvbox/firefox/userChrome.css "$firefox_profile/chrome/"
     
-    print_info "Firefox user.js and userChrome.css installed to profile: $firefox_profile"
-    print_info "Enable userChrome.css: about:config -> toolkit.legacyUserProfileCustomizations.stylesheets -> true"
+    print_info "Firefox user.js and userChrome.css installed to: $firefox_profile"
+    print_info "Restart Firefox completely for changes to take effect"
 else
-    print_info "Firefox profile not found. Run Firefox once, then copy configs manually:"
-    print_info "cp $SCRIPT_DIR/dots/gruvbox/firefox/user.js ~/.mozilla/firefox/*.default-release/"
-    print_info "mkdir -p ~/.mozilla/firefox/*.default-release/chrome"
-    print_info "cp $SCRIPT_DIR/dots/gruvbox/firefox/userChrome.css ~/.mozilla/firefox/*.default-release/chrome/"
+    print_info "Firefox profile not found. Run Firefox once, then run this script again"
 end
 
 print_step "Setting up wallpaper"

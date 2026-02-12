@@ -225,21 +225,50 @@ cp $SCRIPT_DIR/dots/gruvbox/eza/colors ~/.config/eza/
 
 print_step "Configuring Git"
 
-read -P "Enter your Git name: " git_name
-read -P "Enter your Git email: " git_email
+set -l existing_name (git config --global user.name 2>/dev/null)
+set -l existing_email (git config --global user.email 2>/dev/null)
 
-if test -z "$git_name" -o -z "$git_email"
-    print_error "Git name and email cannot be empty"
-    exit 1
+if test -n "$existing_name" -a -n "$existing_email"
+    print_info "Git already configured: $existing_name <$existing_email>"
+    read -P "Keep existing Git config? [Y/n]: " keep_git
+    
+    if test "$keep_git" = "n" -o "$keep_git" = "N"
+        read -P "Enter your Git name: " git_name
+        read -P "Enter your Git email: " git_email
+        
+        if test -z "$git_name" -o -z "$git_email"
+            print_error "Git name and email cannot be empty"
+            exit 1
+        end
+        
+        cp $SCRIPT_DIR/dots/gruvbox/git/config ~/.gitconfig
+        sed -i "s/YOUR_NAME/$git_name/" ~/.gitconfig
+        sed -i "s/YOUR_EMAIL/$git_email/" ~/.gitconfig
+        
+        print_info "Git config updated: $git_name <$git_email>"
+    else
+        cp $SCRIPT_DIR/dots/gruvbox/git/config ~/.gitconfig
+        sed -i "s/YOUR_NAME/$existing_name/" ~/.gitconfig
+        sed -i "s/YOUR_EMAIL/$existing_email/" ~/.gitconfig
+        
+        print_info "Git config updated with existing credentials"
+    end
+else
+    read -P "Enter your Git name: " git_name
+    read -P "Enter your Git email: " git_email
+    
+    if test -z "$git_name" -o -z "$git_email"
+        print_error "Git name and email cannot be empty"
+        exit 1
+    end
+    
+    cp $SCRIPT_DIR/dots/gruvbox/git/config ~/.gitconfig
+    sed -i "s/YOUR_NAME/$git_name/" ~/.gitconfig
+    sed -i "s/YOUR_EMAIL/$git_email/" ~/.gitconfig
+    
+    print_info "Git config installed with Delta diff viewer"
+    print_info "Git user: $git_name <$git_email>"
 end
-
-cp $SCRIPT_DIR/dots/gruvbox/git/config ~/.gitconfig
-
-sed -i "s/YOUR_NAME/$git_name/" ~/.gitconfig
-sed -i "s/YOUR_EMAIL/$git_email/" ~/.gitconfig
-
-print_info "Git config installed with Delta diff viewer"
-print_info "Git user: $git_name <$git_email>"
 
 print_step "Copying Zellij configuration"
 cp $SCRIPT_DIR/dots/gruvbox/zellij/config.kdl ~/.config/zellij/

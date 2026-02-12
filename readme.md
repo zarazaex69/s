@@ -24,6 +24,9 @@ cd sway-dots
 
 # run install script
 fish install.fish 
+
+# set telegram theme
+t.me/addtheme/t6WoEEBSIMdPjB73 or dots/gruvbox/telegram/gruvbox.tdesktop-theme
 ```
 
 ### Screenshots

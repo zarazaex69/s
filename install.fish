@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+set THEME "gruvbox"
+
 set -l SCRIPT_DIR (dirname (status --current-filename))
 
 function print_step
@@ -60,7 +62,11 @@ set -l packages \
     ttf-jetbrains-mono-nerd \
     noto-fonts-emoji \
     xorg-xinit \
-    xorg-xauth
+    xorg-xauth \
+    git \
+    git-delta \
+    htop \
+    zellij
 
 set -l packages_to_install
 
@@ -159,6 +165,8 @@ mkdir -p ~/.config/yazi
 mkdir -p ~/.config/fuzzel
 mkdir -p ~/.config/fastfetch
 mkdir -p ~/.config/eza
+mkdir -p ~/.config/zellij
+mkdir -p ~/.config/htop
 mkdir -p ~/Pictures/Screenshots
 
 print_step "Creating user directories"
@@ -212,6 +220,30 @@ cp $SCRIPT_DIR/dots/gruvbox/fastfetch/config.jsonc ~/.config/fastfetch/
 print_step "Copying Eza configuration"
 cp $SCRIPT_DIR/dots/gruvbox/eza/eza.conf ~/.config/eza/
 cp $SCRIPT_DIR/dots/gruvbox/eza/colors ~/.config/eza/
+
+print_step "Configuring Git"
+
+read -P "Enter your Git name: " git_name
+read -P "Enter your Git email: " git_email
+
+if test -z "$git_name" -o -z "$git_email"
+    print_error "Git name and email cannot be empty"
+    exit 1
+end
+
+cp $SCRIPT_DIR/dots/gruvbox/git/config ~/.gitconfig
+
+sed -i "s/YOUR_NAME/$git_name/" ~/.gitconfig
+sed -i "s/YOUR_EMAIL/$git_email/" ~/.gitconfig
+
+print_info "Git config installed with Delta diff viewer"
+print_info "Git user: $git_name <$git_email>"
+
+print_step "Copying Zellij configuration"
+cp $SCRIPT_DIR/dots/gruvbox/zellij/config.kdl ~/.config/zellij/
+
+print_step "Copying Htop configuration"
+cp $SCRIPT_DIR/dots/gruvbox/htop/htoprc ~/.config/htop/
 
 print_step "Setting up wallpaper"
 mkdir -p ~/Pictures/Wallpapers

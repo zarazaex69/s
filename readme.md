@@ -26,6 +26,9 @@ Sway dotfiles is a sway gruvbox style cfgs
 |  Shell              | Fish + Starship |
 |  Menu               | Fuzzel      |
 |  File Browser       | Yazi        |
+|  Terminal Multiplexer | Zellij    |
+|  System Monitor     | Htop        |
+|  Git Diff           | Delta       |
 
 ### Credits
 Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)

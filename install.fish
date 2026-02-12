@@ -66,7 +66,8 @@ set -l packages \
     git \
     git-delta \
     htop \
-    zellij
+    zellij \
+    firefox
 
 set -l packages_to_install
 
@@ -168,6 +169,7 @@ mkdir -p ~/.config/eza
 mkdir -p ~/.config/zellij
 mkdir -p ~/.config/htop
 mkdir -p ~/Pictures/Screenshots
+mkdir -p ~/.mozilla/firefox
 
 print_step "Creating user directories"
 mkdir -p ~/Projects
@@ -244,6 +246,24 @@ cp $SCRIPT_DIR/dots/gruvbox/zellij/config.kdl ~/.config/zellij/
 
 print_step "Copying Htop configuration"
 cp $SCRIPT_DIR/dots/gruvbox/htop/htoprc ~/.config/htop/
+
+print_step "Setting up Firefox"
+set -l firefox_profile (find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-release" 2>/dev/null | head -n 1)
+
+if test -n "$firefox_profile"
+    cp $SCRIPT_DIR/dots/gruvbox/firefox/user.js "$firefox_profile/"
+    
+    mkdir -p "$firefox_profile/chrome"
+    cp $SCRIPT_DIR/dots/gruvbox/firefox/userChrome.css "$firefox_profile/chrome/"
+    
+    print_info "Firefox user.js and userChrome.css installed to profile: $firefox_profile"
+    print_info "Enable userChrome.css: about:config -> toolkit.legacyUserProfileCustomizations.stylesheets -> true"
+else
+    print_info "Firefox profile not found. Run Firefox once, then copy configs manually:"
+    print_info "cp $SCRIPT_DIR/dots/gruvbox/firefox/user.js ~/.mozilla/firefox/*.default-release/"
+    print_info "mkdir -p ~/.mozilla/firefox/*.default-release/chrome"
+    print_info "cp $SCRIPT_DIR/dots/gruvbox/firefox/userChrome.css ~/.mozilla/firefox/*.default-release/chrome/"
+end
 
 print_step "Setting up wallpaper"
 mkdir -p ~/Pictures/Wallpapers
@@ -326,4 +346,5 @@ print_info "Or reboot to use Ly display manager"
 print_info ""
 print_info "Don't forget to:"
 print_info "1. Log out and log back in to apply Fish shell"
-print_info "2. Adjust paths in Sway config if needed"
+print_info "2. Enable Firefox userChrome: about:config -> toolkit.legacyUserProfileCustomizations.stylesheets -> true"
+print_info "3. Adjust paths in Sway config if needed"

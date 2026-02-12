@@ -29,11 +29,14 @@ Sway dotfiles is a sway gruvbox style cfgs
 |  Terminal Multiplexer | Zellij    |
 |  System Monitor     | Htop        |
 |  Git Diff           | Delta       |
+|  Browser            | Firefox     |
 
 ### Credits
 Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)
 
 Off repo author: [Pirtur](https://github.com/pirtur/sway-dots)
+
+Firefox user.js: [yokoffing](https://github.com/yokoffing/Betterfox/blob/main/Fastfox.js)
 
 
 <div align="center">

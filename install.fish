@@ -302,7 +302,8 @@ print_info "Wallpaper copied to ~/Pictures/Wallpapers/wind.png"
 
 print_step "Setting Fish as default shell"
 set -l fish_path (which fish)
-if test "$SHELL" != "$fish_path"
+set -l current_shell (getent passwd $USER | cut -d: -f7)
+if test "$current_shell" != "$fish_path"
     print_info "Changing default shell to Fish"
     chsh -s $fish_path
     print_info "You need to log out and log back in for shell change to take effect"

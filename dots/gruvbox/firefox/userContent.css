@@ -1,0 +1,88 @@
+@-moz-document url("about:home"), url("about:newtab"), url("about:privatebrowsing") {
+  body {
+    background-color: #282828 !important;
+    color: #ebdbb2 !important;
+  }
+
+  .search-wrapper input {
+    background-color: #3c3836 !important;
+    color: #ebdbb2 !important;
+    border: 1px solid #504945 !important;
+    border-radius: 0 !important;
+  }
+
+  .search-wrapper input:focus {
+    background-color: #504945 !important;
+    border-color: #bdae93 !important;
+  }
+
+  .search-handoff-button {
+    background-color: #3c3836 !important;
+    color: #ebdbb2 !important;
+    border: 1px solid #504945 !important;
+    border-radius: 0 !important;
+  }
+
+  .search-handoff-button:hover {
+    background-color: #504945 !important;
+  }
+
+  .top-site-outer .tile {
+    background-color: #3c3836 !important;
+    border-radius: 0 !important;
+  }
+
+  .top-site-outer .tile:hover {
+    background-color: #504945 !important;
+  }
+
+  .top-site-outer .title {
+    color: #d5c4a1 !important;
+  }
+
+  .context-menu {
+    background-color: #3c3836 !important;
+    border: 1px solid #504945 !important;
+    border-radius: 0 !important;
+  }
+
+  .context-menu-item:hover {
+    background-color: #504945 !important;
+    color: #ebdbb2 !important;
+  }
+
+  .prefs-button button {
+    background-color: #3c3836 !important;
+    color: #ebdbb2 !important;
+    border-radius: 0 !important;
+  }
+
+  .prefs-button button:hover {
+    background-color: #504945 !important;
+  }
+
+  .card-outer {
+    background-color: #3c3836 !important;
+    border-radius: 0 !important;
+  }
+
+  .card-outer:hover {
+    background-color: #504945 !important;
+  }
+
+  .card-title {
+    color: #ebdbb2 !important;
+  }
+
+  .card-description {
+    color: #d5c4a1 !important;
+  }
+
+  .section-title {
+    color: #ebdbb2 !important;
+  }
+
+  * {
+    border-radius: 0 !important;
+  }
+}

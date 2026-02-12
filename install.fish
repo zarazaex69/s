@@ -276,6 +276,59 @@ cp $SCRIPT_DIR/dots/gruvbox/zellij/config.kdl ~/.config/zellij/
 print_step "Copying Htop configuration"
 cp $SCRIPT_DIR/dots/gruvbox/htop/htoprc ~/.config/htop/
 
+print_step "Configuring Pacman"
+if test -f /etc/pacman.conf
+    set -l needs_update 0
+    
+    if not grep -q "^ParallelDownloads" /etc/pacman.conf
+        set needs_update 1
+        print_info "Adding ParallelDownloads to pacman.conf"
+    end
+    
+    if not grep -q "^ILoveCandy" /etc/pacman.conf
+        set needs_update 1
+        print_info "Adding ILoveCandy to pacman.conf"
+    end
+    
+    if not grep -q "^\[multilib\]" /etc/pacman.conf
+        set needs_update 1
+        print_info "Adding multilib repository to pacman.conf"
+    end
+    
+    if test $needs_update -eq 1
+        sudo cp /etc/pacman.conf /etc/pacman.conf.backup
+        print_info "Backup created: /etc/pacman.conf.backup"
+        
+        if not grep -q "^ParallelDownloads" /etc/pacman.conf
+            sudo sed -i '/^#ParallelDownloads/c\ParallelDownloads = 16' /etc/pacman.conf
+            if not grep -q "^ParallelDownloads" /etc/pacman.conf
+                sudo sed -i '/\[options\]/a ParallelDownloads = 16' /etc/pacman.conf
+            end
+        end
+        
+        if not grep -q "^ILoveCandy" /etc/pacman.conf
+            sudo sed -i '/^Color/a ILoveCandy' /etc/pacman.conf
+            if not grep -q "^ILoveCandy" /etc/pacman.conf
+                sudo sed -i '/\[options\]/a ILoveCandy' /etc/pacman.conf
+            end
+        end
+        
+        if not grep -q "^\[multilib\]" /etc/pacman.conf
+            echo "" | sudo tee -a /etc/pacman.conf > /dev/null
+            echo "[multilib]" | sudo tee -a /etc/pacman.conf > /dev/null
+            echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf > /dev/null
+        end
+        
+        print_step "Pacman configuration updated"
+        print_info "Updating package database"
+        sudo pacman -Sy
+    else
+        print_info "Pacman already configured correctly"
+    end
+else
+    print_error "pacman.conf not found"
+end
+
 print_step "Setting up Firefox"
 set -l firefox_profile (find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-release" 2>/dev/null | head -n 1)
 

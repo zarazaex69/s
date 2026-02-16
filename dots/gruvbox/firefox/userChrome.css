@@ -59,7 +59,6 @@
 #navigator-toolbox #pageActionSeparator,
 #navigator-toolbox #pageActionButton,
 #navigator-toolbox #identity-box,
-#unified-extensions-button,
 #alltabs-button,
 #identity-permission-box,
 #star-button-box,
@@ -377,4 +376,26 @@ panelview {
 
 #reload-button {
   display: none !important;
+}
+
+
+#navigator-toolbox #nav-bar #PanelUI-button {
+  -moz-box-ordinal-group: 0 !important;
+  order: -100 !important; 
+  margin-left: 2px !important; 
+}
+
+
+#unified-extensions-button {
+  display: flex !important; 
+  background: var(--base01) !important;
+  border-left: solid 1px var(--base00) !important;
+  width: 26px !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
+  fill: var(--base06) !important;
+}
+
+#unified-extensions-button:hover {
+  background: var(--base02) !important;
 }

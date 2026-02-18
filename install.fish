@@ -436,7 +436,7 @@ if test -d /sys/firmware/efi
     if test "$install_limine" = "y" -o "$install_limine" = "Y"
         if not pacman -Qi limine &> /dev/null
             print_info "Installing Limine package"
-            sudo pacman -S --needed --noconfirm limine
+            sudo pacman -S --needed --noconfirm limine efibootmgr
         else
             print_info "Limine already installed"
         end

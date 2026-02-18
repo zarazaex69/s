@@ -426,6 +426,157 @@ else
     print_info "Ly not installed, skipping display manager configuration"
 end
 
+print_step "Bootloader configuration"
+
+if test -d /sys/firmware/efi
+    print_info "UEFI system detected"
+    
+    read -P "Do you want to install/configure Limine bootloader? [y/N]: " install_limine
+    
+    if test "$install_limine" = "y" -o "$install_limine" = "Y"
+        if not pacman -Qi limine &> /dev/null
+            print_info "Installing Limine package"
+            sudo pacman -S --needed --noconfirm limine
+        else
+            print_info "Limine already installed"
+        end
+        
+        set -l esp_path (bootctl --print-esp-path 2>/dev/null)
+        
+        if test -z "$esp_path"
+            print_info "ESP not detected automatically"
+            read -P "Enter ESP mount point (e.g., /boot or /efi): " esp_path
+        else
+            print_info "ESP detected at: $esp_path"
+            read -P "Use this ESP path? [Y/n]: " use_esp
+            
+            if test "$use_esp" = "n" -o "$use_esp" = "N"
+                read -P "Enter ESP mount point: " esp_path
+            end
+        end
+        
+        if test -z "$esp_path" -o ! -d "$esp_path"
+            print_error "Invalid ESP path: $esp_path"
+        else
+            print_step "Installing Limine to ESP"
+            
+            sudo mkdir -p "$esp_path/EFI/limine"
+            sudo cp /usr/share/limine/BOOTX64.EFI "$esp_path/EFI/limine/"
+            
+            if test $status -eq 0
+                print_info "Limine EFI binary installed"
+            else
+                print_error "Failed to copy Limine EFI binary"
+            end
+            
+            print_step "Configuring Limine"
+            
+            set -l root_uuid (findmnt -no UUID /)
+            set -l root_device (findmnt -no SOURCE /)
+            
+            if test -z "$root_uuid"
+                print_error "Could not detect root UUID"
+                read -P "Enter root partition UUID or device: " root_device
+            else
+                print_info "Root UUID: $root_uuid"
+            end
+            
+            if test -f "$SCRIPT_DIR/dots/gruvbox/limine/limine.conf"
+                sudo cp "$SCRIPT_DIR/dots/gruvbox/limine/limine.conf" "$esp_path/EFI/limine/"
+                
+                if test -n "$root_uuid"
+                    sudo sed -i "s|rw|root=UUID=$root_uuid rw|" "$esp_path/EFI/limine/limine.conf"
+                else if test -n "$root_device"
+                    sudo sed -i "s|rw|root=$root_device rw|" "$esp_path/EFI/limine/limine.conf"
+                end
+                
+                print_info "Limine config installed to: $esp_path/EFI/limine/limine.conf"
+            else
+                print_error "Limine config template not found"
+            end
+            
+            print_step "Creating UEFI boot entry"
+            
+            set -l disk_device (lsblk -no PKNAME (findmnt -no SOURCE "$esp_path"))
+            set -l part_number (lsblk -no PARTN (findmnt -no SOURCE "$esp_path"))
+            
+            if test -n "$disk_device" -a -n "$part_number"
+                print_info "Disk: /dev/$disk_device, Partition: $part_number"
+                
+                if efibootmgr | grep -q "Arch Linux Limine"
+                    print_info "Limine boot entry already exists"
+                    read -P "Remove old entry and create new? [y/N]: " recreate_entry
+                    
+                    if test "$recreate_entry" = "y" -o "$recreate_entry" = "Y"
+                        set -l entry_num (efibootmgr | grep "Arch Linux Limine" | sed 's/Boot\([0-9A-F]*\).*/\1/')
+                        if test -n "$entry_num"
+                            sudo efibootmgr -b $entry_num -B
+                            print_info "Old entry removed"
+                        end
+                        
+                        sudo efibootmgr --create --disk "/dev/$disk_device" --part "$part_number" \
+                            --label "Arch Linux Limine" \
+                            --loader '\EFI\limine\BOOTX64.EFI' \
+                            --unicode
+                        
+                        if test $status -eq 0
+                            print_step "Limine boot entry created successfully"
+                        else
+                            print_error "Failed to create boot entry"
+                        end
+                    end
+                else
+                    sudo efibootmgr --create --disk "/dev/$disk_device" --part "$part_number" \
+                        --label "Arch Linux Limine" \
+                        --loader '\EFI\limine\BOOTX64.EFI' \
+                        --unicode
+                    
+                    if test $status -eq 0
+                        print_step "Limine boot entry created successfully"
+                    else
+                        print_error "Failed to create boot entry"
+                    end
+                end
+            else
+                print_error "Could not detect disk/partition info"
+                print_info "You may need to create boot entry manually:"
+                print_info "efibootmgr --create --disk /dev/sdX --part Y --label 'Arch Linux Limine' --loader '\\EFI\\limine\\BOOTX64.EFI' --unicode"
+            end
+            
+            print_step "Creating pacman hook for Limine"
+            
+            sudo mkdir -p /etc/pacman.d/hooks
+            
+            set -l hook_content "[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = limine
+
+[Action]
+Description = Deploying Limine after upgrade...
+When = PostTransaction
+Exec = /usr/bin/cp /usr/share/limine/BOOTX64.EFI $esp_path/EFI/limine/"
+            
+            echo "$hook_content" | sudo tee /etc/pacman.d/hooks/99-limine.hook > /dev/null
+            
+            if test $status -eq 0
+                print_info "Pacman hook created: /etc/pacman.d/hooks/99-limine.hook"
+            else
+                print_error "Failed to create pacman hook"
+            end
+            
+            print_step "Limine installation complete"
+            print_info "Config file: $esp_path/EFI/limine/limine.conf"
+            print_info "You may need to edit it to add kernel parameters or adjust paths"
+        end
+    else
+        print_info "Skipping Limine installation"
+    end
+else
+    print_info "Non-UEFI system detected, skipping bootloader configuration"
+end
+
 print_step "Installation complete!"
 print_info "To start Sway, run: sway"
 print_info "Or reboot to use Ly display manager"
@@ -435,3 +586,4 @@ print_info "1. Log out and log back in to apply Fish shell"
 print_info "2. Enable Firefox userChrome: about:config -> toolkit.legacyUserProfileCustomizations.stylesheets -> true"
 print_info "3. Adjust paths in Sway config if needed"
 print_info "4. Set telegram theme https://t.me/addtheme/t6WoEEBSIMdPjB73 or dots/gruvbox/telegram/gruvbox.tdesktop-theme"
+print_info "5. Review Limine config if installed: /boot/EFI/limine/limine.conf"

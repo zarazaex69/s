@@ -473,6 +473,7 @@ if test -d /sys/firmware/efi
             
             set -l root_uuid (findmnt -no UUID /)
             set -l root_device (findmnt -no SOURCE /)
+            set -l root_fstype (findmnt -no FSTYPE /)
             
             if test -z "$root_uuid"
                 print_error "Could not detect root UUID"
@@ -481,13 +482,22 @@ if test -d /sys/firmware/efi
                 print_info "Root UUID: $root_uuid"
             end
             
+            set -l rootflags ""
+            if test "$root_fstype" = "btrfs"
+                set -l root_subvol (findmnt -no OPTIONS / | grep -oP 'subvol=\K[^,]+' || echo "")
+                if test -n "$root_subvol"
+                    set rootflags " rootflags=subvol=$root_subvol"
+                    print_info "Btrfs subvolume: $root_subvol"
+                end
+            end
+            
             if test -f "$SCRIPT_DIR/dots/gruvbox/limine/limine.conf"
                 sudo cp "$SCRIPT_DIR/dots/gruvbox/limine/limine.conf" "$esp_path/EFI/limine/"
                 
                 if test -n "$root_uuid"
-                    sudo sed -i "s|rw|root=UUID=$root_uuid rw|" "$esp_path/EFI/limine/limine.conf"
+                    sudo sed -i "s|rw\$|root=UUID=$root_uuid rw$rootflags|" "$esp_path/EFI/limine/limine.conf"
                 else if test -n "$root_device"
-                    sudo sed -i "s|rw|root=$root_device rw|" "$esp_path/EFI/limine/limine.conf"
+                    sudo sed -i "s|rw\$|root=$root_device rw$rootflags|" "$esp_path/EFI/limine/limine.conf"
                 end
                 
                 print_info "Limine config installed to: $esp_path/EFI/limine/limine.conf"
@@ -605,12 +615,22 @@ else
                 
                 set -l root_uuid (findmnt -no UUID /)
                 set -l root_device (findmnt -no SOURCE /)
+                set -l root_fstype (findmnt -no FSTYPE /)
+                
+                set -l rootflags ""
+                if test "$root_fstype" = "btrfs"
+                    set -l root_subvol (findmnt -no OPTIONS / | grep -oP 'subvol=\K[^,]+' || echo "")
+                    if test -n "$root_subvol"
+                        set rootflags " rootflags=subvol=$root_subvol"
+                        print_info "Btrfs subvolume: $root_subvol"
+                    end
+                end
                 
                 if test -n "$root_uuid"
-                    sudo sed -i "s|rw|root=UUID=$root_uuid rw|" "$boot_path/limine/limine.conf"
+                    sudo sed -i "s|rw\$|root=UUID=$root_uuid rw$rootflags|" "$boot_path/limine/limine.conf"
                     print_info "Root UUID: $root_uuid"
                 else if test -n "$root_device"
-                    sudo sed -i "s|rw|root=$root_device rw|" "$boot_path/limine/limine.conf"
+                    sudo sed -i "s|rw\$|root=$root_device rw$rootflags|" "$boot_path/limine/limine.conf"
                     print_info "Root device: $root_device"
                 end
                 

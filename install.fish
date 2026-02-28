@@ -574,7 +574,99 @@ Exec = /usr/bin/cp /usr/share/limine/BOOTX64.EFI $esp_path/EFI/limine/"
         print_info "Skipping Limine installation"
     end
 else
-    print_info "Non-UEFI system detected, skipping bootloader configuration"
+    print_info "Legacy BIOS system detected"
+    
+    read -P "Do you want to install/configure Limine bootloader (Legacy BIOS)? [y/N]: " install_limine
+    
+    if test "$install_limine" = "y" -o "$install_limine" = "Y"
+        if not pacman -Qi limine &> /dev/null
+            print_info "Installing Limine package"
+            sudo pacman -S --needed --noconfirm limine
+        else
+            print_info "Limine already installed"
+        end
+        
+        print_step "Configuring Limine for Legacy BIOS"
+        
+        set -l boot_path /boot
+        
+        if test ! -d "$boot_path"
+            read -P "Enter boot partition mount point [/boot]: " boot_path
+            test -z "$boot_path" && set boot_path /boot
+        end
+        
+        if test -d "$boot_path"
+            print_info "Using boot path: $boot_path"
+            
+            sudo mkdir -p "$boot_path/limine"
+            
+            if test -f "$SCRIPT_DIR/dots/gruvbox/limine/limine.conf"
+                sudo cp "$SCRIPT_DIR/dots/gruvbox/limine/limine.conf" "$boot_path/limine/"
+                
+                set -l root_uuid (findmnt -no UUID /)
+                set -l root_device (findmnt -no SOURCE /)
+                
+                if test -n "$root_uuid"
+                    sudo sed -i "s|rw|root=UUID=$root_uuid rw|" "$boot_path/limine/limine.conf"
+                    print_info "Root UUID: $root_uuid"
+                else if test -n "$root_device"
+                    sudo sed -i "s|rw|root=$root_device rw|" "$boot_path/limine/limine.conf"
+                    print_info "Root device: $root_device"
+                end
+                
+                print_info "Limine config installed to: $boot_path/limine/limine.conf"
+            else
+                print_error "Limine config template not found"
+            end
+            
+            print_step "Installing Limine to disk"
+            
+            set -l boot_disk (lsblk -no PKNAME (findmnt -no SOURCE "$boot_path"))
+            
+            if test -z "$boot_disk"
+                set boot_disk (lsblk -no PKNAME (findmnt -no SOURCE /))
+            end
+            
+            if test -n "$boot_disk"
+                print_info "Detected disk: /dev/$boot_disk"
+                read -P "Install Limine to /dev/$boot_disk? [Y/n]: " confirm_disk
+                
+                if test "$confirm_disk" = "n" -o "$confirm_disk" = "N"
+                    read -P "Enter disk device (e.g., sda): " boot_disk
+                end
+            else
+                read -P "Enter disk device to install Limine (e.g., sda): " boot_disk
+            end
+            
+            if test -n "$boot_disk" -a -b "/dev/$boot_disk"
+                sudo limine bios-install "/dev/$boot_disk"
+                
+                if test $status -eq 0
+                    print_step "Limine installed to /dev/$boot_disk"
+                else
+                    print_error "Failed to install Limine to disk"
+                end
+            else
+                print_error "Invalid disk device: /dev/$boot_disk"
+            end
+            
+            print_step "Copying Limine system files"
+            sudo cp /usr/share/limine/limine-bios.sys "$boot_path/limine/"
+            
+            if test $status -eq 0
+                print_info "Limine system files copied"
+            else
+                print_error "Failed to copy Limine system files"
+            end
+            
+            print_step "Limine Legacy BIOS installation complete"
+            print_info "Config file: $boot_path/limine/limine.conf"
+        else
+            print_error "Boot path not found: $boot_path"
+        end
+    else
+        print_info "Skipping Limine installation"
+    end
 end
 
 print_step "Installation complete!"

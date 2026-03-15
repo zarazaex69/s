@@ -2,7 +2,7 @@
 <div align="center">
 
 ![License](https://img.shields.io/badge/license-BSD--3--Clause-0D1117?style=flat-square&logo=open-source-initiative&logoColor=green&labelColor=0D1117)
-![Sway](https://img.shields.io/badge/Sway-6272A4?style=flat-square&logo=sway&logoColor=white&labelColor=0D1117)
+![Sway](https://img.shields.io/badge/Sway-0D1117?style=flat-square&logo=sway&logoColor=white&labelColor=0D1117)
 
 </div>
 

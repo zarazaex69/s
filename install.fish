@@ -355,14 +355,22 @@ cp $SCRIPT_DIR/wallpapers/wind.png ~/Pictures/Wallpapers/
 print_info "Wallpaper copied to ~/Pictures/Wallpapers/wind.png"
 
 print_step "Setting Fish as default shell"
-set -l fish_path (which fish)
+set -l fish_path (command -v fish)
 set -l current_shell (getent passwd $USER | cut -d: -f7)
-if test "$current_shell" != "$fish_path"
-    print_info "Changing default shell to Fish"
-    chsh -s $fish_path
-    print_info "You need to log out and log back in for shell change to take effect"
-else
+if test "$current_shell" = "$fish_path"
     print_info "Fish is already your default shell"
+else
+    if not grep -qx "$fish_path" /etc/shells
+        print_info "Adding $fish_path to /etc/shells"
+        echo "$fish_path" | sudo tee -a /etc/shells > /dev/null
+    end
+    print_info "Changing default shell to Fish"
+    sudo chsh -s $fish_path $USER
+    if test $status -eq 0
+        print_info "Shell changed to Fish, log out and log back in to apply"
+    else
+        print_error "Failed to change shell to Fish"
+    end
 end
 
 print_step "Configuring Ly display manager"

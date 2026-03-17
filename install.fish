@@ -32,6 +32,11 @@ end
 print_step "Installing required packages"
 
 set -l packages \
+    base-devel \
+    bind \
+    curl \
+    libnetfilter_queue \
+    ipset \
     sway \
     waybar \
     foot \

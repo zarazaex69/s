@@ -387,11 +387,6 @@ else
     print_info "Firefox profile not found. Run Firefox once, then run this script again"
 end
 
-print_step "Setting up wallpaper"
-mkdir -p ~/Pictures/Wallpapers
-cp $SCRIPT_DIR/wallpapers/wind.png ~/Pictures/Wallpapers/
-print_info "Wallpaper copied to ~/Pictures/Wallpapers/wind.png"
-
 print_step "Building l toolkit"
 if test -d $SCRIPT_DIR/l
     make -C $SCRIPT_DIR/l clean

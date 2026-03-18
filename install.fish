@@ -65,7 +65,6 @@ set -l packages \
     dunst \
     grim \
     slurp \
-    swaylock \
     swaybg \
     brightnessctl \
     usbutils \

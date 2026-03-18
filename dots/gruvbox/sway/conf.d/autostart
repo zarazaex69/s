@@ -9,8 +9,3 @@ exec wl-paste --type image --watch cliphist store
 exec_always --no-startup-id ~/.config/sway/scripts/dynamic-wallpaper.sh
 
 exec_always dunst
-
-exec_always swayidle -w \
-    timeout 120 '$HOME/Scripts/swaylock.sh' \
-    before-sleep '$HOME/Scripts/swaylock.sh'
-

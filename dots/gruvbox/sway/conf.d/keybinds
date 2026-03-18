@@ -17,7 +17,7 @@ floating_modifier $mod normal
 # [L] l toolkit
 bindsym $mod+Shift+a exec l autorun # [l] autorun manager on {$mod+Shift+a}
 bindsym $mod+Shift+p exec l wallsee # [l] wallpaper configurator on {$mod+Shift+p}
-bindsym $mod+Shift+k exec l keybind # [l] keybind viewer on {$mod+Shift+k}
+bindsym $mod+Shift+slash exec l keybind # [l] keybind viewer on {$mod+Shift+slash}
 
 # [L] session
 bindsym $mod+Shift+c reload # [l] reload sway config on {$mod+Shift+c}

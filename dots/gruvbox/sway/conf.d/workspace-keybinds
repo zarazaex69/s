@@ -1,23 +1,25 @@
 # [L] switch workspace
-bindsym $mod+1 workspace number 1 # [l] workspace 1 on {$mod+1}
-bindsym $mod+2 workspace number 2 # [l] workspace 2 on {$mod+2}
-bindsym $mod+3 workspace number 3 # [l] workspace 3 on {$mod+3}
-bindsym $mod+4 workspace number 4 # [l] workspace 4 on {$mod+4}
-bindsym $mod+5 workspace number 5 # [l] workspace 5 on {$mod+5}
-bindsym $mod+6 workspace number 6 # [l] workspace 6 on {$mod+6}
-bindsym $mod+7 workspace number 7 # [l] workspace 7 on {$mod+7}
-bindsym $mod+8 workspace number 8 # [l] workspace 8 on {$mod+8}
-bindsym $mod+9 workspace number 9 # [l] workspace 9 on {$mod+9}
-bindsym $mod+0 workspace number 10 # [l] workspace 10 on {$mod+0}
+# [l] workspace 1-10 on {$mod+1..0}
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
 # [L] move to workspace
-bindsym $mod+Shift+1 move container to workspace number 1 # [l] move to workspace 1 on {$mod+Shift+1}
-bindsym $mod+Shift+2 move container to workspace number 2 # [l] move to workspace 2 on {$mod+Shift+2}
-bindsym $mod+Shift+3 move container to workspace number 3 # [l] move to workspace 3 on {$mod+Shift+3}
-bindsym $mod+Shift+4 move container to workspace number 4 # [l] move to workspace 4 on {$mod+Shift+4}
-bindsym $mod+Shift+5 move container to workspace number 5 # [l] move to workspace 5 on {$mod+Shift+5}
-bindsym $mod+Shift+6 move container to workspace number 6 # [l] move to workspace 6 on {$mod+Shift+6}
-bindsym $mod+Shift+7 move container to workspace number 7 # [l] move to workspace 7 on {$mod+Shift+7}
-bindsym $mod+Shift+8 move container to workspace number 8 # [l] move to workspace 8 on {$mod+Shift+8}
-bindsym $mod+Shift+9 move container to workspace number 9 # [l] move to workspace 9 on {$mod+Shift+9}
-bindsym $mod+Shift+0 move container to workspace number 10 # [l] move to workspace 10 on {$mod+Shift+0}
+# [l] move to workspace 1-10 on {$mod+Shift+1..0}
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10

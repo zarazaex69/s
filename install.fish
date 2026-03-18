@@ -413,7 +413,32 @@ if pacman -Qi ly &> /dev/null
     print_info "Script directory: $SCRIPT_DIR"
     
     if test -f $SCRIPT_DIR/dots/gruvbox/ly/config.ini
+        # preserve auto_login fields if already configured
+        set -l old_session "null"
+        set -l old_user "null"
+        if test -f /etc/ly/config.ini
+            set -l val (grep -Po '^\s*auto_login_session\s*=\s*\K\S.*' /etc/ly/config.ini 2>/dev/null)
+            if test -n "$val"
+                set old_session $val
+            end
+            set -l val2 (grep -Po '^\s*auto_login_user\s*=\s*\K\S.*' /etc/ly/config.ini 2>/dev/null)
+            if test -n "$val2"
+                set old_user $val2
+            end
+        end
+
         sudo cp $SCRIPT_DIR/dots/gruvbox/ly/config.ini /etc/ly/config.ini
+
+        # restore auto_login values if they were not null
+        if test "$old_session" != "null"
+            sudo sed -i "s|^auto_login_session = .*|auto_login_session = $old_session|" /etc/ly/config.ini
+            print_info "Preserved auto_login_session = $old_session"
+        end
+        if test "$old_user" != "null"
+            sudo sed -i "s|^auto_login_user = .*|auto_login_user = $old_user|" /etc/ly/config.ini
+            print_info "Preserved auto_login_user = $old_user"
+        end
+
         print_info "Ly config.ini installed"
     else
         print_error "Ly config.ini not found at: $SCRIPT_DIR/dots/gruvbox/ly/config.ini"

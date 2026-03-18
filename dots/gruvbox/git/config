@@ -3,7 +3,7 @@
 	email = YOUR_EMAIL
 
 [core]
-	editor = vim
+	editor = micro
 	pager = delta
 
 [init]

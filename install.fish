@@ -74,6 +74,7 @@ set -l packages \
     xorg-xauth \
     git \
     git-delta \
+    micro \
     htop \
     zellij \
     firefox

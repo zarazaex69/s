@@ -514,25 +514,29 @@ end
 
 print_step "Printer configuration"
 
-read -P "Do you want to configure printer? [y/N]: " setup_printer
+if pacman -Qi cups &> /dev/null; and pacman -Qi splix &> /dev/null; and systemctl is-active --quiet cups.service
+    print_info "CUPS is already running and SpliX is installed, skipping"
+else
+    read -P "Do you want to configure printer? [y/N]: " setup_printer
 
-if test "$setup_printer" = "y" -o "$setup_printer" = "Y"
-    if pacman -Qi cups &> /dev/null
-        print_info "Enabling and starting CUPS service"
-        sudo systemctl enable --now cups.service
+    if test "$setup_printer" = "y" -o "$setup_printer" = "Y"
+        if pacman -Qi cups &> /dev/null
+            print_info "Enabling and starting CUPS service"
+            sudo systemctl enable --now cups.service
 
-        if test $status -eq 0
-            print_info "CUPS is running at http://localhost:631"
-            print_info "SpliX drivers available for Samsung printers"
-            print_info "Add your printer via CUPS web interface or system-config-printer"
+            if test $status -eq 0
+                print_info "CUPS is running at http://localhost:631"
+                print_info "SpliX drivers available for Samsung printers"
+                print_info "Add your printer via CUPS web interface or system-config-printer"
+            else
+                print_error "Failed to start CUPS service"
+            end
         else
-            print_error "Failed to start CUPS service"
+            print_error "CUPS package not installed"
         end
     else
-        print_error "CUPS package not installed"
+        print_info "Skipping printer configuration"
     end
-else
-    print_info "Skipping printer configuration"
 end
 
 print_step "Bootloader configuration"

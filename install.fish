@@ -389,8 +389,8 @@ end
 
 print_step "Building l toolkit"
 if test -d $SCRIPT_DIR/l
-    make -C $SCRIPT_DIR/l clean
-    make -C $SCRIPT_DIR/l
+    make -C $SCRIPT_DIR/l clean --silent 2>/dev/null
+    make -C $SCRIPT_DIR/l --silent 2>&1 | grep -i "error"
 
     if test -f $SCRIPT_DIR/l/build/l
         sudo cp $SCRIPT_DIR/l/build/l /usr/bin/l

@@ -55,6 +55,7 @@ set -l packages \
     swaybg \
     brightnessctl \
     usbutils \
+    cups \
     pipewire \
     pipewire-pulse \
     pipewire-alsa \
@@ -146,6 +147,10 @@ if command -v yay &> /dev/null
     
     if not pacman -Qi ly &> /dev/null
         set -a aur_packages ly
+    end
+    
+    if not pacman -Qi splix &> /dev/null
+        set -a aur_packages splix
     end
     
     if test (count $aur_packages) -gt 0
@@ -490,6 +495,29 @@ if pacman -Qi ly &> /dev/null
     end
 else
     print_info "Ly not installed, skipping display manager configuration"
+end
+
+print_step "Printer configuration"
+
+read -P "Do you want to configure printer? [y/N]: " setup_printer
+
+if test "$setup_printer" = "y" -o "$setup_printer" = "Y"
+    if pacman -Qi cups &> /dev/null
+        print_info "Enabling and starting CUPS service"
+        sudo systemctl enable --now cups.service
+
+        if test $status -eq 0
+            print_info "CUPS is running at http://localhost:631"
+            print_info "SpliX drivers available for Samsung printers"
+            print_info "Add your printer via CUPS web interface or system-config-printer"
+        else
+            print_error "Failed to start CUPS service"
+        end
+    else
+        print_error "CUPS package not installed"
+    end
+else
+    print_info "Skipping printer configuration"
 end
 
 print_step "Bootloader configuration"

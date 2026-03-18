@@ -49,3 +49,5 @@ user_pref("browser.urlbar.speculativeConnect.enabled", false);
 user_pref("browser.places.speculativeConnect.enabled", false);
 
 user_pref("network.prefetch-next", false);
+
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);

@@ -5,29 +5,27 @@ if [ -f "$PIDFILE" ]; then
     oldpid=$(cat "$PIDFILE" 2>/dev/null)
     if [ -n "$oldpid" ] && kill -0 "$oldpid" 2>/dev/null; then
         kill "$oldpid" 2>/dev/null
-        wait "$oldpid" 2>/dev/null
+        sleep 0.2
     fi
+    rm -f "$PIDFILE"
 fi
 
 echo $$ > "$PIDFILE"
 trap 'rm -f "$PIDFILE"' EXIT
 
-swaymsg -t subscribe -m '["window"]' | while read -r event; do
-    change=$(printf '%s' "$event" | jq -r '.change // empty')
-    [ "$change" != "focus" ] && continue
-
-    ids=$(swaymsg -t get_tree | jq -r '
+while true; do
+    swaymsg -t get_tree | jq -r '
         recurse(.nodes[]?, .floating_nodes[]?) |
-        select(.type == "con" and .focused == false) |
+        select(.name? != null) |
         select(
-            .app_id == "fuzzel" or
-            (.app_id | test("^l (keybind|wallsee|autorun)$")) or
-            (.name | test("^l (keybind|wallsee|autorun)$"))
+            (.name == "l keybind") or
+            (.name == "l wallsee") or
+            (.name == "l autorun")
         ) |
-        .id
-    ')
-
-    for wid in $ids; do
-        swaymsg "[con_id=$wid] kill" 2>/dev/null
+        select(.focused == false) |
+        .pid
+    ' 2>/dev/null | while read -r pid; do
+        [ -n "$pid" ] && [ "$pid" != "null" ] && kill "$pid" 2>/dev/null
     done
+    sleep 0.15
 done

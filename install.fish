@@ -92,7 +92,8 @@ set -l packages \
     zellij \
     firefox \
     cava \
-    raylib
+    raylib \
+    jq
 
 set -l packages_to_install
 

@@ -65,17 +65,6 @@ t.me/addtheme/t6WoEEBSIMdPjB73 or dots/gruvbox/telegram/gruvbox.tdesktop-theme
 
 ---
 
-
-### Credits
-Insipiration: [Visibobl Swaydots](https://github.com/visibobl/swaydots)
-
-Off repo author: [Pirtur](https://github.com/pirtur/sway-dots)
-
-Firefox user.js: [yokoffing](https://github.com/yokoffing/Betterfox/blob/main/Fastfox.js)
-
-Firefox theme: [calvinchd](https://codeberg.org/calvinchd/GruvboxDarkFirefoxTheme)
-
-
 ### Contact
 
 Telegram: [zarazaex](https://t.me/zarazaexe)

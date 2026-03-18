@@ -54,6 +54,7 @@ set -l packages \
     swaylock \
     swaybg \
     brightnessctl \
+    usbutils \
     pipewire \
     pipewire-pulse \
     pipewire-alsa \

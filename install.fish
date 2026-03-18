@@ -38,6 +38,7 @@ set -l packages \
     libnetfilter_queue \
     ipset \
     zip \
+    tcc \
     sway \
     waybar \
     foot \
@@ -369,6 +370,21 @@ print_step "Setting up wallpaper"
 mkdir -p ~/Pictures/Wallpapers
 cp $SCRIPT_DIR/wallpapers/wind.png ~/Pictures/Wallpapers/
 print_info "Wallpaper copied to ~/Pictures/Wallpapers/wind.png"
+
+print_step "Building dynamic wallpaper generator"
+cp $SCRIPT_DIR/dots/gruvbox/sway/scripts/wallpaper.c ~/.config/sway/scripts/
+cp $SCRIPT_DIR/dots/gruvbox/sway/scripts/dynamic-wallpaper.sh ~/.config/sway/scripts/
+chmod +x ~/.config/sway/scripts/dynamic-wallpaper.sh
+
+if command -v tcc &> /dev/null
+    tcc ~/.config/sway/scripts/wallpaper.c -o ~/.config/sway/scripts/wallgen -lm
+    print_info "Compiled wallpaper generator with tcc"
+else if command -v gcc &> /dev/null
+    gcc -O2 ~/.config/sway/scripts/wallpaper.c -o ~/.config/sway/scripts/wallgen -lm
+    print_info "Compiled wallpaper generator with gcc"
+else
+    print_error "No C compiler found, dynamic wallpaper will compile on first sway start"
+end
 
 print_step "Setting Fish as default shell"
 set -l fish_path (command -v fish)

@@ -37,6 +37,7 @@ set -l packages \
     curl \
     libnetfilter_queue \
     ipset \
+    zip \
     sway \
     waybar \
     foot \
@@ -347,6 +348,16 @@ if test -n "$firefox_profile"
     mkdir -p "$firefox_profile/chrome"
     cp $SCRIPT_DIR/dots/gruvbox/firefox/userChrome.css "$firefox_profile/chrome/"
     cp $SCRIPT_DIR/dots/gruvbox/firefox/userContent.css "$firefox_profile/chrome/"
+    
+    if test -d $SCRIPT_DIR/dots/gruvbox/firefox/theme
+        print_info "Installing Gruvbox Firefox theme"
+        set -l theme_xpi "$firefox_profile/extensions/gruvbox-theme@dotfiles.xpi"
+        mkdir -p "$firefox_profile/extensions"
+        pushd $SCRIPT_DIR/dots/gruvbox/firefox/theme
+        zip -q -r -FS "$theme_xpi" manifest.json
+        popd
+        print_info "Gruvbox theme xpi installed to profile extensions"
+    end
     
     print_info "Firefox user.js, userChrome.css and userContent.css installed to: $firefox_profile"
     print_info "Restart Firefox completely for changes to take effect"

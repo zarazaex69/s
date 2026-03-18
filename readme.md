@@ -73,6 +73,8 @@ Off repo author: [Pirtur](https://github.com/pirtur/sway-dots)
 
 Firefox user.js: [yokoffing](https://github.com/yokoffing/Betterfox/blob/main/Fastfox.js)
 
+Firefox theme: [calvinchd](https://codeberg.org/calvinchd/GruvboxDarkFirefoxTheme)
+
 
 ### Contact
 

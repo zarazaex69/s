@@ -78,7 +78,8 @@ set -l packages \
     htop \
     zellij \
     firefox \
-    cava
+    cava \
+    raylib
 
 set -l packages_to_install
 

@@ -17,7 +17,7 @@ Sway dotfiles is a sway gruvbox style cfgs
 sudo pacman -S fish git 
 
 # clone repo 
-git clone https://github.com/zarazaex69/sway-dots
+git clone --recurse-submodules https://github.com/zarazaex69/sway-dots
 
 # cd to repo
 cd sway-dots

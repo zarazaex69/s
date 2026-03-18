@@ -4,6 +4,20 @@ set THEME "gruvbox"
 
 set -l SCRIPT_DIR (dirname (status --current-filename))
 
+# init git submodules if not already checked out
+if test -f $SCRIPT_DIR/.gitmodules
+    set -l need_init 0
+    for sm_path in (git -C $SCRIPT_DIR config --file .gitmodules --get-regexp path | awk '{print $2}')
+        if not test -f $SCRIPT_DIR/$sm_path/.git; and not test -d $SCRIPT_DIR/$sm_path/.git
+            set need_init 1
+            break
+        end
+    end
+    if test $need_init -eq 1
+        git -C $SCRIPT_DIR submodule update --init --recursive
+    end
+end
+
 function print_step
     set_color green
     echo "===> $argv"
@@ -38,6 +52,7 @@ set -l packages \
     libnetfilter_queue \
     ipset \
     zip \
+    make \
     tcc \
     sway \
     waybar \
@@ -377,20 +392,25 @@ mkdir -p ~/Pictures/Wallpapers
 cp $SCRIPT_DIR/wallpapers/wind.png ~/Pictures/Wallpapers/
 print_info "Wallpaper copied to ~/Pictures/Wallpapers/wind.png"
 
-print_step "Building dynamic wallpaper generator"
-cp $SCRIPT_DIR/dots/gruvbox/sway/scripts/wallpaper.c ~/.config/sway/scripts/
+print_step "Building l toolkit"
+if test -d $SCRIPT_DIR/l
+    make -C $SCRIPT_DIR/l clean
+    make -C $SCRIPT_DIR/l
+
+    if test -f $SCRIPT_DIR/l/build/l
+        sudo cp $SCRIPT_DIR/l/build/l /usr/bin/l
+        sudo chmod +x /usr/bin/l
+        print_info "l installed to /usr/bin/l"
+    else
+        print_error "l build failed, binary not found"
+    end
+else
+    print_error "l submodule directory not found, run: git submodule update --init --recursive"
+end
+
+print_step "Copying dynamic wallpaper script"
 cp $SCRIPT_DIR/dots/gruvbox/sway/scripts/dynamic-wallpaper.sh ~/.config/sway/scripts/
 chmod +x ~/.config/sway/scripts/dynamic-wallpaper.sh
-
-if command -v tcc &> /dev/null
-    tcc ~/.config/sway/scripts/wallpaper.c -o ~/.config/sway/scripts/wallgen -lm
-    print_info "Compiled wallpaper generator with tcc"
-else if command -v gcc &> /dev/null
-    gcc -O2 ~/.config/sway/scripts/wallpaper.c -o ~/.config/sway/scripts/wallgen -lm
-    print_info "Compiled wallpaper generator with gcc"
-else
-    print_error "No C compiler found, dynamic wallpaper will compile on first sway start"
-end
 
 print_step "Setting Fish as default shell"
 set -l fish_path (command -v fish)

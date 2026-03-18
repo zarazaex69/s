@@ -14,6 +14,11 @@ bindsym $mod+Shift+v exec $clipboard-hist # [l] clipboard history on {$mod+Shift
 # floating window mouse behavior
 floating_modifier $mod normal
 
+# [L] l toolkit
+bindsym $mod+Shift+a exec l autorun # [l] autorun manager on {$mod+Shift+a}
+bindsym $mod+Shift+p exec l wallsee # [l] wallpaper configurator on {$mod+Shift+p}
+bindsym $mod+Shift+k exec l keybind # [l] keybind viewer on {$mod+Shift+k}
+
 # [L] session
 bindsym $mod+Shift+c reload # [l] reload sway config on {$mod+Shift+c}
 bindsym $mod+Shift+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit' # [l] exit sway on {$mod+Shift+Ctrl+e}

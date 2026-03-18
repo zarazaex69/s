@@ -4,7 +4,6 @@ set THEME "gruvbox"
 
 set -l SCRIPT_DIR (dirname (status --current-filename))
 
-# init git submodules if not already checked out
 if test -f $SCRIPT_DIR/.gitmodules
     set -l need_init 0
     for sm_path in (git -C $SCRIPT_DIR config --file .gitmodules --get-regexp path | awk '{print $2}')
@@ -259,11 +258,9 @@ print_step "Configuring Git"
 set -l existing_name (git config --global user.name 2>/dev/null)
 set -l existing_email (git config --global user.email 2>/dev/null)
 
-# always install the template for delta, aliases, colors, etc.
 cp $SCRIPT_DIR/dots/gruvbox/git/config ~/.gitconfig
 
 if test -n "$existing_name" -a -n "$existing_email"
-    # user already has name/email configured, keep them
     print_info "Git credentials found: $existing_name <$existing_email>"
     
     read -P "Change Git name/email? [y/N]: " change_git
@@ -272,7 +269,6 @@ if test -n "$existing_name" -a -n "$existing_email"
         read -P "Enter new Git name [$existing_name]: " git_name
         read -P "Enter new Git email [$existing_email]: " git_email
         
-        # keep old values if user just pressed enter
         test -z "$git_name"; and set git_name $existing_name
         test -z "$git_email"; and set git_email $existing_email
         
@@ -434,7 +430,6 @@ if pacman -Qi ly &> /dev/null
     print_info "Script directory: $SCRIPT_DIR"
     
     if test -f $SCRIPT_DIR/dots/gruvbox/ly/config.ini
-        # preserve auto_login fields if already configured
         set -l old_session "null"
         set -l old_user "null"
         if test -f /etc/ly/config.ini
@@ -450,7 +445,6 @@ if pacman -Qi ly &> /dev/null
 
         sudo cp $SCRIPT_DIR/dots/gruvbox/ly/config.ini /etc/ly/config.ini
 
-        # restore auto_login values if they were not null
         if test "$old_session" != "null"
             sudo sed -i "s|^auto_login_session = .*|auto_login_session = $old_session|" /etc/ly/config.ini
             print_info "Preserved auto_login_session = $old_session"
@@ -543,6 +537,21 @@ print_step "Bootloader configuration"
 
 if test -d /sys/firmware/efi
     print_info "UEFI system detected"
+    
+    set -l limine_already_configured 0
+    set -l esp_check (bootctl --print-esp-path 2>/dev/null)
+    if pacman -Qi limine &> /dev/null
+        and test -n "$esp_check"
+        and test -f "$esp_check/EFI/limine/BOOTX64.EFI"
+        and test -f "$esp_check/EFI/limine/limine.conf"
+        and efibootmgr 2>/dev/null | grep -q "Arch Linux Limine"
+        and test -f /etc/pacman.d/hooks/99-limine.hook
+        set limine_already_configured 1
+    end
+
+    if test $limine_already_configured -eq 1
+        print_info "Limine is already installed and configured, skipping"
+    else
     
     read -P "Do you want to install/configure Limine bootloader? [y/N]: " install_limine
     
@@ -696,8 +705,21 @@ Exec = /usr/bin/cp /usr/share/limine/BOOTX64.EFI $esp_path/EFI/limine/"
     else
         print_info "Skipping Limine installation"
     end
+
+    end 
 else
     print_info "Legacy BIOS system detected"
+    
+    set -l limine_already_configured 0
+    if pacman -Qi limine &> /dev/null
+        and test -f /boot/limine/limine.conf
+        and test -f /boot/limine/limine-bios.sys
+        set limine_already_configured 1
+    end
+
+    if test $limine_already_configured -eq 1
+        print_info "Limine is already installed and configured, skipping"
+    else
     
     read -P "Do you want to install/configure Limine bootloader (Legacy BIOS)? [y/N]: " install_limine
     
@@ -800,6 +822,8 @@ else
     else
         print_info "Skipping Limine installation"
     end
+
+    end 
 end
 
 print_step "Installation complete!"

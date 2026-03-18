@@ -1,39 +1,33 @@
-### Key bindings
+# [L] applications
+bindsym $mod+Return exec $term # [l] launch {$term} on {$mod+Return}
+bindsym $mod+Shift+b exec $web-browser # [l] open {$web-browser} on {$mod+Shift+b}
+bindsym $mod+Shift+e exec $filemanager # [l] open {$filemanager} on {$mod+Shift+e}
+bindsym $mod+Shift+Return exec $menu # [l] app launcher on {$mod+Shift+Return}
+bindsym $mod+q kill # [l] kill focused window on {$mod+q}
 
-# Applications / Services
-bindsym $mod+Return exec $term
-bindsym $mod+Shift+b exec $web-browser
-bindsym $mod+Shift+e exec $filemanager
-bindsym $mod+Shift+Return exec $menu
-bindsym $mod+q kill
+# [L] notifications
+bindsym $mod+Shift+w exec $notification # [l] notification history on {$mod+Shift+w}
 
-# Dunst notification history
-bindsym $mod+Shift+w exec $notification
+# [L] clipboard
+bindsym $mod+Shift+v exec $clipboard-hist # [l] clipboard history on {$mod+Shift+v}
 
-# Clipboard
-bindsym $mod+Shift+v exec $clipboard-hist
-
-# Floating window mouse behavior
+# floating window mouse behavior
 floating_modifier $mod normal
 
-# Reload sway config
-bindsym $mod+Shift+c reload
+# [L] session
+bindsym $mod+Shift+c reload # [l] reload sway config on {$mod+Shift+c}
+bindsym $mod+Shift+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit' # [l] exit sway on {$mod+Shift+Ctrl+e}
 
-# Exit sway
-bindsym $mod+Shift+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# [L] screenshots
+bindsym Print exec $screenshot # [l] screenshot region on {Print}
+bindsym $mod+Shift+s exec $screenshot # [l] screenshot region on {$mod+Shift+s}
 
-### Utilities / Hardware keys
-# Screenshots
-bindsym Print exec $screenshot
-bindsym $mod+Shift+s exec $screenshot
+# [L] audio
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle # [l] mute/unmute on {XF86AudioMute}
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5% # [l] volume down on {XF86AudioLowerVolume}
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5% # [l] volume up on {XF86AudioRaiseVolume}
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle # [l] mic mute on {XF86AudioMicMute}
 
-# Audio
-bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-
-# Brightness
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-
+# [L] brightness
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%- # [l] brightness down on {XF86MonBrightnessDown}
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+ # [l] brightness up on {XF86MonBrightnessUp}

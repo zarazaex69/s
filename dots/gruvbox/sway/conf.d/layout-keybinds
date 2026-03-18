@@ -1,38 +1,35 @@
-### Layout / Navigation
+# [L] focus navigation
+bindsym $mod+$left focus left # [l] focus left on {$mod+$left}
+bindsym $mod+$down focus down # [l] focus down on {$mod+$down}
+bindsym $mod+$up focus up # [l] focus up on {$mod+$up}
+bindsym $mod+$right focus right # [l] focus right on {$mod+$right}
+bindsym $mod+Left focus left # [l] focus left on {$mod+Left}
+bindsym $mod+Down focus down # [l] focus down on {$mod+Down}
+bindsym $mod+Up focus up # [l] focus up on {$mod+Up}
+bindsym $mod+Right focus right # [l] focus right on {$mod+Right}
 
-# Focus movement
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# [L] move windows
+bindsym $mod+Shift+$left move left # [l] move window left on {$mod+Shift+$left}
+bindsym $mod+Shift+$down move down # [l] move window down on {$mod+Shift+$down}
+bindsym $mod+Shift+$up move up # [l] move window up on {$mod+Shift+$up}
+bindsym $mod+Shift+$right move right # [l] move window right on {$mod+Shift+$right}
+bindsym $mod+Shift+Left move left # [l] move window left on {$mod+Shift+Left}
+bindsym $mod+Shift+Down move down # [l] move window down on {$mod+Shift+Down}
+bindsym $mod+Shift+Up move up # [l] move window up on {$mod+Shift+Up}
+bindsym $mod+Shift+Right move right # [l] move window right on {$mod+Shift+Right}
 
-# Move windows
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# [L] layouts
+bindsym $mod+b splith # [l] split horizontal on {$mod+b}
+bindsym $mod+v splitv # [l] split vertical on {$mod+v}
+bindsym $mod+s layout stacking # [l] stacking layout on {$mod+s}
+bindsym $mod+w layout tabbed # [l] tabbed layout on {$mod+w}
+bindsym $mod+e layout toggle split # [l] toggle split on {$mod+e}
+bindsym $mod+f fullscreen # [l] fullscreen on {$mod+f}
+bindsym $mod+m maximize # [l] maximize on {$mod+m}
+bindsym $mod+Shift+space floating toggle # [l] toggle floating on {$mod+Shift+space}
+bindsym $mod+space focus mode_toggle # [l] toggle focus mode on {$mod+space}
+bindsym $mod+a focus parent # [l] focus parent on {$mod+a}
 
-# Layouts
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+f fullscreen
-bindsym $mod+m maximize
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
-
-# Scratchpad
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
-
+# [L] scratchpad
+bindsym $mod+Shift+minus move scratchpad # [l] move to scratchpad on {$mod+Shift+minus}
+bindsym $mod+minus scratchpad show # [l] show scratchpad on {$mod+minus}

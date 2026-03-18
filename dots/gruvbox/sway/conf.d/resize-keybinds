@@ -1,15 +1,14 @@
-### Resize mode
+# [L] resize mode
 mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym $left resize shrink width 10px # [l] shrink width on {$left}
+    bindsym $down resize grow height 10px # [l] grow height on {$down}
+    bindsym $up resize shrink height 10px # [l] shrink height on {$up}
+    bindsym $right resize grow width 10px # [l] grow width on {$right}
+    bindsym Left resize shrink width 10px # [l] shrink width on {Left}
+    bindsym Down resize grow height 10px # [l] grow height on {Down}
+    bindsym Up resize shrink height 10px # [l] shrink height on {Up}
+    bindsym Right resize grow width 10px # [l] grow width on {Right}
+    bindsym Return mode "default" # [l] exit resize on {Return}
+    bindsym Escape mode "default" # [l] exit resize on {Escape}
 }
-bindsym $mod+r mode "resize"
-
+bindsym $mod+r mode "resize" # [l] enter resize mode on {$mod+r}

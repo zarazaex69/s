@@ -77,7 +77,8 @@ set -l packages \
     micro \
     htop \
     zellij \
-    firefox
+    firefox \
+    cava
 
 set -l packages_to_install
 

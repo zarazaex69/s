@@ -9,3 +9,5 @@ exec wl-paste --type image --watch cliphist store
 exec_always --no-startup-id ~/.config/sway/scripts/dynamic-wallpaper.sh
 
 exec_always dunst
+
+exec_always sh $HOME/.config/sway/scripts/close-on-unfocus.sh

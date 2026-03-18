@@ -3,3 +3,12 @@
 default_border pixel 3
 default_floating_border pixel 3
 gaps inner 10
+
+### Popup windows (close on focus lost)
+for_window [app_id="fuzzel"] floating enable
+for_window [app_id="^l keybind$"] floating enable
+for_window [app_id="^l wallsee$"] floating enable
+for_window [app_id="^l autorun$"] floating enable
+for_window [title="^l keybind$"] floating enable
+for_window [title="^l wallsee$"] floating enable
+for_window [title="^l autorun$"] floating enable

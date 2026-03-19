@@ -20,7 +20,8 @@ while true; do
         select(
             (.name == "l keybind") or
             (.name == "l wallsee") or
-            (.name == "l autorun")
+            (.name == "l autorun") or
+            (.name == "l menu")
         ) |
         select(.focused == false) |
         .pid

@@ -19,6 +19,9 @@ bindsym $mod+Shift+a exec l autorun # [l] autorun manager on {$mod+Shift+a}
 bindsym $mod+Shift+p exec l wallsee # [l] wallpaper configurator on {$mod+Shift+p}
 bindsym $mod+Shift+slash exec l keybind # [l] keybind viewer on {$mod+Shift+slash}
 
+# [L] power
+bindsym --locked XF86PowerOff exec l menu # [l] power menu on {XF86PowerOff}
+
 # [L] session
 bindsym $mod+Shift+c reload # [l] reload sway config on {$mod+Shift+c}
 bindsym $mod+Shift+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit' # [l] exit sway on {$mod+Shift+Ctrl+e}

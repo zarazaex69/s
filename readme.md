@@ -6,8 +6,8 @@
 
 </div>
 
-# Abont
-Sway dotfiles is a sway gruvbox style cfgs
+# About
+s is a sway gruvbox style cfgs
 
 # Fast start
 

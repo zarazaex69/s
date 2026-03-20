@@ -17,10 +17,10 @@ Sway dotfiles is a sway gruvbox style cfgs
 sudo pacman -S fish git 
 
 # clone repo 
-git clone --recurse-submodules https://github.com/zarazaex69/sway-dots
+git clone --recurse-submodules https://github.com/zarazaex69/s
 
 # cd to repo
-cd sway-dots
+cd s
 
 # run install script
 fish install.fish 

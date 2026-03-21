@@ -95,6 +95,7 @@ set -l packages \
     raylib \
     jq \
     mpv \
+    feh \
     xdg-utils
 
 set -l packages_to_install
@@ -327,6 +328,22 @@ for mime in $mpv_mime_types
     xdg-mime default mpv.desktop $mime
 end
 print_info "mpv set as default for video and audio MIME types"
+
+print_step "Setting feh as default image viewer"
+set -l feh_mime_types \
+    image/png \
+    image/jpeg \
+    image/gif \
+    image/bmp \
+    image/tiff \
+    image/webp \
+    image/x-icon \
+    image/svg+xml
+
+for mime in $feh_mime_types
+    xdg-mime default feh.desktop $mime
+end
+print_info "feh set as default for image MIME types"
 
 print_step "Configuring Pacman"
 if test -f /etc/pacman.conf

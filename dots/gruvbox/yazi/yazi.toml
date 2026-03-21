@@ -1,19 +1,69 @@
 [mgr]
+ratio = [1, 3, 4]
+sort_by = "natural"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = true
 show_hidden = true
+show_symlink = true
+scrolloff = 5
+linemode = "size"
+mouse_events = ["click", "scroll", "touch", "move", "drag"]
+title_format = "Yazi: {cwd}"
+
+[preview]
+wrap = "yes"
+tab_size = 4
+max_width = 1920
+max_height = 1080
+image_filter = "lanczos3"
+image_quality = 75
 
 [opener]
 edit = [
-    { run = 'nvim "$@"', block = true, for = "unix" }
+    { run = 'nvim "$@"', block = true, for = "unix", desc = "Neovim" }
+]
+open = [
+    { run = 'xdg-open "$@"', orphan = true, for = "unix", desc = "System default" }
 ]
 play = [
-    { run = 'mpv "$@"', orphan = true, for = "unix" }
+    { run = 'mpv "$@"', orphan = true, for = "unix", desc = "mpv" }
 ]
 image = [
-    { run = 'qimgv "$@"', orphan = true, for = "unix" }
+    { run = 'qimgv "$@"', orphan = true, for = "unix", desc = "qimgv" }
 ]
-
+archive_extract = [
+    { run = 'unar "$@"', desc = "Extract here (unar)", for = "unix" },
+    { run = 'bsdtar -xf "$@"', desc = "Extract here (bsdtar)", for = "unix" }
+]
+pdf = [
+    { run = 'zathura "$@"', orphan = true, for = "unix", desc = "Zathura" }
+]
+browser = [
+    { run = 'firefox "$@"', orphan = true, for = "unix", desc = "Firefox" }
+]
 
 [open]
 prepend_rules = [
-    { mime = "image/*", use = "image" }
+    { mime = "image/*", use = "image" },
+    { mime = "video/*", use = "play" },
+    { mime = "audio/*", use = "play" },
+    { mime = "application/pdf", use = "pdf" },
+    { name = "*.html", use = ["browser", "edit"] },
+    { mime = "application/*zip", use = "archive_extract" },
+    { mime = "application/x-tar", use = "archive_extract" },
+    { mime = "application/x-bzip*", use = "archive_extract" },
+    { mime = "application/x-7z-compressed", use = "archive_extract" },
+    { mime = "application/x-xz", use = "archive_extract" },
+    { mime = "application/x-rar", use = "archive_extract" },
+    { mime = "application/gzip", use = "archive_extract" },
+    { mime = "text/*", use = "edit" }
 ]
+
+[input]
+cursor_blink = true
+
+[tasks]
+micro_workers = 10
+macro_workers = 25
+bizarre_retry = 5

@@ -1,0 +1,108 @@
+[mgr]
+prepend_keymap = [
+    { on = "?",             run = "help",                                          desc = "Pomoshch (vse goryachie klavishi)" },
+
+    { on = "<Enter>",       run = "open",                                          desc = "Otkryt fajl/papku" },
+    { on = "o",             run = "open --interactive",                             desc = "Otkryt s vyborom programmy" },
+    { on = "<Backspace>",   run = "leave",                                         desc = "Nazad (roditelskaya papka)" },
+
+    { on = "<Up>",          run = "arrow -1",                                      desc = "Vverh" },
+    { on = "<Down>",        run = "arrow 1",                                       desc = "Vniz" },
+    { on = "<Left>",        run = "leave",                                         desc = "Nazad" },
+    { on = "<Right>",       run = "enter",                                         desc = "Vojti v papku" },
+    { on = "<Home>",        run = 'arrow "top"',                                   desc = "V nachalo spiska" },
+    { on = "<End>",         run = 'arrow "bot"',                                   desc = "V konec spiska" },
+    { on = "<PageUp>",      run = "arrow -50%",                                    desc = "Stranica vverh" },
+    { on = "<PageDown>",    run = "arrow 50%",                                     desc = "Stranica vniz" },
+
+    { on = "<Space>",       run = "toggle",                                        desc = "Vydelit/snyat vydelenie" },
+    { on = "<C-a>",         run = "toggle_all --state=on",                         desc = "Vydelit vse" },
+    { on = "<C-d>",         run = "toggle_all --state=off",                        desc = "Snyat vse vydeleniya" },
+
+    { on = "<C-c>",         run = "yank",                                          desc = "Kopirovat (Ctrl+C)" },
+    { on = "<C-x>",         run = "yank --cut",                                    desc = "Vyrezat (Ctrl+X)" },
+    { on = "<C-v>",         run = "paste",                                         desc = "Vstavit (Ctrl+V)" },
+    { on = "<C-z>",         run = "unyank",                                        desc = "Otmena kopirovaniya/vyrezaniya" },
+
+    { on = "<Delete>",      run = "remove",                                        desc = "Udalit v korzinu" },
+    { on = "<S-Delete>",    run = "remove --permanently",                          desc = "Udalit navsegda (ostorozhno!)" },
+
+    { on = "<F2>",          run = "rename",                                        desc = "Pereimenovat (F2)" },
+    { on = "<F5>",          run = "copy path",                                     desc = "Kopirovat put fajla" },
+    { on = "<F7>",          run = "create --dir",                                  desc = "Sozdat papku (F7)" },
+    { on = "<F8>",          run = "remove",                                        desc = "Udalit v korzinu (F8)" },
+
+    { on = "n",             run = "create",                                        desc = "Sozdat fajl ili papku" },
+
+    { on = ".",             run = 'hidden toggle',                                 desc = "Pokazat/skryt skrytye fajly" },
+
+    { on = "/",             run = "find --smart",                                  desc = "Najti fajl (poisk)" },
+    { on = "<C-f>",         run = "search --via=fd",                               desc = "Glubokij poisk (Ctrl+F)" },
+    { on = "<Esc>",         run = "escape --all",                                  desc = "Otmena / vyjti" },
+
+    { on = "f",             run = "filter --smart",                                desc = "Filtr fajlov" },
+
+    { on = "<C-n>",         run = "tab_create --current",                          desc = "Novaya vkladka (Ctrl+N)" },
+    { on = "<C-w>",         run = "close",                                         desc = "Zakryt vkladku (Ctrl+W)" },
+    { on = "<C-Tab>",       run = "tab_switch 1 --relative",                       desc = "Sleduyushchaya vkladka" },
+    { on = "<C-S-Tab>",     run = "tab_switch -1 --relative",                      desc = "Predydushchaya vkladka" },
+
+    { on = ["s", "n"],      run = "sort natural --dir-first",                      desc = "Sort: po imeni" },
+    { on = ["s", "s"],      run = "sort size --dir-first",                         desc = "Sort: po razmeru" },
+    { on = ["s", "m"],      run = "sort mtime --dir-first",                        desc = "Sort: po date izmeneniya" },
+    { on = ["s", "e"],      run = "sort extension --dir-first",                    desc = "Sort: po rasshireniyu" },
+    { on = ["s", "r"],      run = "sort random --dir-first",                       desc = "Sort: sluchajno" },
+
+    { on = ["g", "h"],      run = "cd ~",                                          desc = ">> Domashnyaya papka ~" },
+    { on = ["g", "d"],      run = "cd ~/Downloads",                                desc = ">> Zagruzki ~/Downloads" },
+    { on = ["g", "o"],      run = "cd ~/Documents",                                desc = ">> Dokumenty ~/Documents" },
+    { on = ["g", "p"],      run = "cd ~/Pictures",                                 desc = ">> Kartinki ~/Pictures" },
+    { on = ["g", "v"],      run = "cd ~/Videos",                                   desc = ">> Video ~/Videos" },
+    { on = ["g", "m"],      run = "cd ~/Music",                                    desc = ">> Muzyka ~/Music" },
+    { on = ["g", "t"],      run = "cd ~/Desktop",                                  desc = ">> Rabochij stol ~/Desktop" },
+    { on = ["g", "c"],      run = "cd ~/.config",                                  desc = ">> Konfigi ~/.config" },
+    { on = ["g", "/"],      run = "cd /",                                          desc = ">> Koren sistemy /" },
+    { on = ["g", "e"],      run = "cd /etc",                                       desc = ">> /etc (nastrojki sistemy)" },
+    { on = ["g", "u"],      run = "cd /usr",                                       desc = ">> /usr" },
+    { on = ["g", "l"],      run = "cd /var/log",                                   desc = ">> Logi /var/log" },
+    { on = ["g", "n"],      run = "cd /mnt",                                       desc = ">> Podklyuchennye diski /mnt" },
+    { on = ["g", "r"],      run = "cd /run/media",                                 desc = ">> Fleshki /run/media" },
+    { on = ["g", "g"],      run = 'arrow "top"',                                   desc = "V nachalo spiska" },
+
+    { on = "z",             run = "plugin zoxide",                                 desc = "Zoxide (bystryj perekhod)" },
+
+    { on = "i",             run = "spot",                                          desc = "Info o fajle" },
+    { on = "w",             run = "tasks_show",                                    desc = "Pokazat zadachi" },
+
+    { on = "q",             run = "quit",                                          desc = "Vyjti iz Yazi" },
+    { on = "<C-q>",         run = "quit --no-cwd-file",                            desc = "Vyjti (bez smeny direktorii)" },
+
+    { on = "y",             run = "yank",                                          desc = "Kopirovat (vim-style)" },
+    { on = "x",             run = "yank --cut",                                    desc = "Vyrezat (vim-style)" },
+    { on = "p",             run = "paste",                                         desc = "Vstavit (vim-style)" },
+    { on = "P",             run = "paste --force",                                 desc = "Vstavit s perezapisyu" },
+
+    { on = "d",             run = "remove",                                        desc = "Udalit v korzinu" },
+    { on = "D",             run = "remove --permanently",                          desc = "Udalit navsegda" },
+
+    { on = "r",             run = "rename",                                        desc = "Pereimenovat" },
+
+    { on = "~",             run = "cd --interactive",                              desc = "Perejti v papku (vvesti put)" },
+
+    { on = "T",             run = "plugin --sync hide-preview",                    desc = "Skryt/pokazat prevyu" },
+    { on = "S",             run = "shell --block -- $SHELL",                       desc = "Otkryt terminal zdes" },
+]
+
+[input]
+prepend_keymap = [
+    { on = "<Esc>",   run = "close",          desc = "Zakryt" },
+    { on = "<Enter>", run = "close --submit",  desc = "Podtverdit" },
+]
+
+[confirm]
+prepend_keymap = [
+    { on = "y",       run = "close --submit",  desc = "Da" },
+    { on = "n",       run = "close",           desc = "Net" },
+    { on = "<Enter>", run = "close --submit",  desc = "Podtverdit" },
+    { on = "<Esc>",   run = "close",           desc = "Otmena" },
+]

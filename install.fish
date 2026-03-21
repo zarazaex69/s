@@ -93,7 +93,9 @@ set -l packages \
     firefox \
     cava \
     raylib \
-    jq
+    jq \
+    mpv \
+    xdg-utils
 
 set -l packages_to_install
 
@@ -299,6 +301,32 @@ cp $SCRIPT_DIR/dots/gruvbox/zellij/config.kdl ~/.config/zellij/
 
 print_step "Copying Htop configuration"
 cp $SCRIPT_DIR/dots/gruvbox/htop/htoprc ~/.config/htop/
+
+print_step "Setting mpv as default video/audio player"
+set -l mpv_mime_types \
+    video/mp4 \
+    video/x-matroska \
+    video/webm \
+    video/x-msvideo \
+    video/mpeg \
+    video/ogg \
+    video/x-flv \
+    video/3gpp \
+    video/3gpp2 \
+    video/quicktime \
+    audio/mpeg \
+    audio/ogg \
+    audio/flac \
+    audio/x-wav \
+    audio/mp4 \
+    audio/aac \
+    audio/opus \
+    audio/webm
+
+for mime in $mpv_mime_types
+    xdg-mime default mpv.desktop $mime
+end
+print_info "mpv set as default for video and audio MIME types"
 
 print_step "Configuring Pacman"
 if test -f /etc/pacman.conf
